@@ -18,7 +18,6 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include <stm32h7xx_hal_ltdc.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -32,6 +31,23 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define LCD_ACTIVE_WIDTH  1280
+#define  LCD_ACTIVE_HEIGHT 2400
+
+
+#define H_SYNC_WIDTH  50
+#define H_BACK_PORCH  50
+#define H_FRONT_PORCH 50
+
+#define V_SYNC_WIDTH  50
+#define V_BACK_PORCH  50
+#define V_FRONT_PORCH 50
+
+#define H_TOTAL     (H_SYNC_WIDTH + H_FRONT_PORCH + LCD_ACTIVE_WIDTH + H_BACK_PORCH)
+#define V_TOTAL     (V_SYNC_WIDTH + V_FRONT_PORCH + LCD_ACTIVE_HEIGHT + V_BACK_PORCH)
+
+
+
 
 /* USER CODE END PD */
 
@@ -43,6 +59,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 LTDC_HandleTypeDef hltdc;
+uint32_t strip_buffer1 [];
 
 /* USER CODE BEGIN PV */
 
@@ -125,13 +142,9 @@ void SystemClock_Config(void)
 
   /** Configure the main internal regulator output voltage
   */
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
   while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
-
-  /** Macro to configure the PLL clock source
-  */
-  __HAL_RCC_PLL_PLLSOURCE_CONFIG(RCC_PLLSOURCE_HSI);
 
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
@@ -139,7 +152,16 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_DIV1;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLM = 32;
+  RCC_OscInitStruct.PLL.PLLN = 400;
+  RCC_OscInitStruct.PLL.PLLP = 2;
+  RCC_OscInitStruct.PLL.PLLQ = 2;
+  RCC_OscInitStruct.PLL.PLLR = 2;
+  RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_1;
+  RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
+  RCC_OscInitStruct.PLL.PLLFRACN = 0;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -150,15 +172,15 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2
                               |RCC_CLOCKTYPE_D3PCLK1|RCC_CLOCKTYPE_D1PCLK1;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV1;
-  RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV1;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV1;
-  RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV1;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV4;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
+  RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
   {
     Error_Handler();
   }
@@ -187,14 +209,14 @@ static void MX_LTDC_Init(void)
   hltdc.Init.VSPolarity = LTDC_VSPOLARITY_AL;
   hltdc.Init.DEPolarity = LTDC_DEPOLARITY_AL;
   hltdc.Init.PCPolarity = LTDC_PCPOLARITY_IPC;
-  hltdc.Init.HorizontalSync = 7;
-  hltdc.Init.VerticalSync = 3;
-  hltdc.Init.AccumulatedHBP = 14;
-  hltdc.Init.AccumulatedVBP = 5;
-  hltdc.Init.AccumulatedActiveW = 654;
-  hltdc.Init.AccumulatedActiveH = 485;
-  hltdc.Init.TotalWidth = 660;
-  hltdc.Init.TotalHeigh = 487;
+  hltdc.Init.HorizontalSync = H_SYNC_WIDTH - 1;
+  hltdc.Init.VerticalSync = V_SYNC_WIDTH - 1;
+  hltdc.Init.AccumulatedHBP = H_SYNC_WIDTH + H_BACK_PORCH - 1;
+  hltdc.Init.AccumulatedVBP = V_SYNC_WIDTH + V_BACK_PORCH - 1;
+  hltdc.Init.AccumulatedActiveW = H_SYNC_WIDTH + H_BACK_PORCH + LCD_ACTIVE_WIDTH - 1;
+  hltdc.Init.AccumulatedActiveH = V_SYNC_WIDTH + V_BACK_PORCH + LCD_ACTIVE_HEIGHT - 1;
+  hltdc.Init.TotalWidth = H_TOTAL - 1;
+  hltdc.Init.TotalHeigh = V_TOTAL - 1;
   hltdc.Init.Backcolor.Blue = 0;
   hltdc.Init.Backcolor.Green = 0;
   hltdc.Init.Backcolor.Red = 0;
@@ -222,17 +244,17 @@ static void MX_LTDC_Init(void)
     Error_Handler();
   }
   pLayerCfg1.WindowX0 = 0;
-  pLayerCfg1.WindowX1 = 0;
+  pLayerCfg1.WindowX1 = LCD_ACTIVE_WIDTH;
   pLayerCfg1.WindowY0 = 0;
-  pLayerCfg1.WindowY1 = 0;
-  pLayerCfg1.PixelFormat = LTDC_PIXEL_FORMAT_ARGB8888;
-  pLayerCfg1.Alpha = 0;
+  pLayerCfg1.WindowY1 = LCD_ACTIVE_HEIGHT;
+  pLayerCfg1.PixelFormat = LTDC_PIXEL_FORMAT_L8;
+  pLayerCfg1.Alpha = 255;
   pLayerCfg1.Alpha0 = 0;
-  pLayerCfg1.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
-  pLayerCfg1.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
-  pLayerCfg1.FBStartAdress = 0;
-  pLayerCfg1.ImageWidth = 0;
-  pLayerCfg1.ImageHeight = 0;
+  pLayerCfg1.BlendingFactor1 = LTDC_BLENDING_FACTOR1_PAxCA;
+  pLayerCfg1.BlendingFactor2 = LTDC_BLENDING_FACTOR2_PAxCA;
+  pLayerCfg1.FBStartAdress = strip_buffer1;
+  pLayerCfg1.ImageWidth = LCD_ACTIVE_WIDTH;
+  pLayerCfg1.ImageHeight = LCD_ACTIVE_HEIGHT;
   pLayerCfg1.Backcolor.Blue = 0;
   pLayerCfg1.Backcolor.Green = 0;
   pLayerCfg1.Backcolor.Red = 0;
