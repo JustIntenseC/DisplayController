@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 1
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 1
   29:Core/Src/stm32h7xx_it.c **** 
   30:Core/Src/stm32h7xx_it.c **** /* USER CODE END TD */
   31:Core/Src/stm32h7xx_it.c **** 
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 2
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s 			page 2
 
 
   32:Core/Src/stm32h7xx_it.c **** /* Private define ------------------------------------------------------------*/
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 1
   36              		.loc 1 77 3 view .LVU2
   75:Core/Src/stm32h7xx_it.c ****   {
   37              		.loc 1 75 10 view .LVU3
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 3
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s 			page 3
 
 
   38 0000 FEE7     		b	.L2
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 1
   99:Core/Src/stm32h7xx_it.c **** void MemManage_Handler(void)
  100:Core/Src/stm32h7xx_it.c **** {
   74              		.loc 1 100 1 view -0
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 4
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s 			page 4
 
 
   75              		.cfi_startproc
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 1
  106              		.loc 1 119 9 view .LVU15
  107 0000 FEE7     		b	.L8
  108              		.cfi_endproc
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 5
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s 			page 5
 
 
  109              	.LFE147:
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 1
  144              		.cfi_startproc
  145              		@ args = 0, pretend = 0, frame = 0
  146              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 6
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s 			page 6
 
 
  147              		@ link register save eliminated.
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 1
  170:Core/Src/stm32h7xx_it.c **** void PendSV_Handler(void)
  171:Core/Src/stm32h7xx_it.c **** {
  181              		.loc 1 171 1 view -0
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 7
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s 			page 7
 
 
  182              		.cfi_startproc
@@ -413,94 +413,32 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 1
  212 0006 08BD     		pop	{r3, pc}
  213              		.cfi_endproc
  214              	.LFE152:
- 216              		.section	.text.LTDC_IRQHandler,"ax",%progbits
- 217              		.align	1
- 218              		.global	LTDC_IRQHandler
- 219              		.syntax unified
- 220              		.thumb
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 8
-
-
- 221              		.thumb_func
- 223              	LTDC_IRQHandler:
- 224              	.LFB153:
- 193:Core/Src/stm32h7xx_it.c **** 
- 194:Core/Src/stm32h7xx_it.c **** /******************************************************************************/
- 195:Core/Src/stm32h7xx_it.c **** /* STM32H7xx Peripheral Interrupt Handlers                                    */
- 196:Core/Src/stm32h7xx_it.c **** /* Add here the Interrupt Handlers for the used peripherals.                  */
- 197:Core/Src/stm32h7xx_it.c **** /* For the available peripheral interrupt handler names,                      */
- 198:Core/Src/stm32h7xx_it.c **** /* please refer to the startup file (startup_stm32h7xx.s).                    */
- 199:Core/Src/stm32h7xx_it.c **** /******************************************************************************/
- 200:Core/Src/stm32h7xx_it.c **** 
- 201:Core/Src/stm32h7xx_it.c **** /**
- 202:Core/Src/stm32h7xx_it.c ****   * @brief This function handles LTDC global interrupt.
- 203:Core/Src/stm32h7xx_it.c ****   */
- 204:Core/Src/stm32h7xx_it.c **** void LTDC_IRQHandler(void)
- 205:Core/Src/stm32h7xx_it.c **** {
- 225              		.loc 1 205 1 is_stmt 1 view -0
- 226              		.cfi_startproc
- 227              		@ args = 0, pretend = 0, frame = 0
- 228              		@ frame_needed = 0, uses_anonymous_args = 0
- 229 0000 08B5     		push	{r3, lr}
- 230              		.cfi_def_cfa_offset 8
- 231              		.cfi_offset 3, -8
- 232              		.cfi_offset 14, -4
- 206:Core/Src/stm32h7xx_it.c ****   /* USER CODE BEGIN LTDC_IRQn 0 */
- 207:Core/Src/stm32h7xx_it.c **** 
- 208:Core/Src/stm32h7xx_it.c ****   /* USER CODE END LTDC_IRQn 0 */
- 209:Core/Src/stm32h7xx_it.c ****   HAL_LTDC_IRQHandler(&hltdc);
- 233              		.loc 1 209 3 view .LVU30
- 234 0002 0248     		ldr	r0, .L18
- 235 0004 FFF7FEFF 		bl	HAL_LTDC_IRQHandler
- 236              	.LVL1:
- 210:Core/Src/stm32h7xx_it.c ****   /* USER CODE BEGIN LTDC_IRQn 1 */
- 211:Core/Src/stm32h7xx_it.c **** 
- 212:Core/Src/stm32h7xx_it.c ****   /* USER CODE END LTDC_IRQn 1 */
- 213:Core/Src/stm32h7xx_it.c **** }
- 237              		.loc 1 213 1 is_stmt 0 view .LVU31
- 238 0008 08BD     		pop	{r3, pc}
- 239              	.L19:
- 240 000a 00BF     		.align	2
- 241              	.L18:
- 242 000c 00000000 		.word	hltdc
- 243              		.cfi_endproc
- 244              	.LFE153:
- 246              		.text
- 247              	.Letext0:
- 248              		.file 2 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@xp
- 249              		.file 3 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@xp
- 250              		.file 4 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h"
- 251              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
- 252              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ltdc.h"
- 253              		.file 7 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s 			page 9
+ 216              		.text
+ 217              	.Letext0:
+ 218              		.file 2 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32h7xx_it.c
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:20     .text.NMI_Handler:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:26     .text.NMI_Handler:00000000 NMI_Handler
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:43     .text.HardFault_Handler:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:49     .text.HardFault_Handler:00000000 HardFault_Handler
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:66     .text.MemManage_Handler:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:72     .text.MemManage_Handler:00000000 MemManage_Handler
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:89     .text.BusFault_Handler:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:95     .text.BusFault_Handler:00000000 BusFault_Handler
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:112    .text.UsageFault_Handler:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:118    .text.UsageFault_Handler:00000000 UsageFault_Handler
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:135    .text.SVC_Handler:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:141    .text.SVC_Handler:00000000 SVC_Handler
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:154    .text.DebugMon_Handler:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:160    .text.DebugMon_Handler:00000000 DebugMon_Handler
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:173    .text.PendSV_Handler:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:179    .text.PendSV_Handler:00000000 PendSV_Handler
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:192    .text.SysTick_Handler:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:198    .text.SysTick_Handler:00000000 SysTick_Handler
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:217    .text.LTDC_IRQHandler:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:223    .text.LTDC_IRQHandler:00000000 LTDC_IRQHandler
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccdNAUKw.s:242    .text.LTDC_IRQHandler:0000000c $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:20     .text.NMI_Handler:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:26     .text.NMI_Handler:00000000 NMI_Handler
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:43     .text.HardFault_Handler:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:49     .text.HardFault_Handler:00000000 HardFault_Handler
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:66     .text.MemManage_Handler:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:72     .text.MemManage_Handler:00000000 MemManage_Handler
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:89     .text.BusFault_Handler:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:95     .text.BusFault_Handler:00000000 BusFault_Handler
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:112    .text.UsageFault_Handler:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:118    .text.UsageFault_Handler:00000000 UsageFault_Handler
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:135    .text.SVC_Handler:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:141    .text.SVC_Handler:00000000 SVC_Handler
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:154    .text.DebugMon_Handler:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:160    .text.DebugMon_Handler:00000000 DebugMon_Handler
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:173    .text.PendSV_Handler:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:179    .text.PendSV_Handler:00000000 PendSV_Handler
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:192    .text.SysTick_Handler:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc5ndBEP.s:198    .text.SysTick_Handler:00000000 SysTick_Handler
 
 UNDEFINED SYMBOLS
 HAL_IncTick
-HAL_LTDC_IRQHandler
-hltdc

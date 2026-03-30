@@ -69,6 +69,9 @@ ITCMRAM (xrw)      : ORIGIN = 0x00000000, LENGTH = 64K
 FLASH (rx)      : ORIGIN = 0x8000000, LENGTH = 2048K
 }
 
+
+/* Остальные секции идут здесь... */
+
 /* Define output sections */
 SECTIONS
 {
@@ -183,6 +186,25 @@ SECTIONS
     . = ALIGN(4);
     _ebss = .;         /* define a global symbol at bss end */
     __bss_end__ = _ebss;
+  } >DTCMRAM
+
+    /* Видеобуферы в RAM (512 КБ) */
+  .video_buffers (NOLOAD) :
+  {
+    . = ALIGN(32);
+    *(.video_buffers)
+    *(.video_buffers*)
+  } > RAM
+
+  /* User_heap_stack section, used to check that there is enough RAM left */
+  ._user_heap_stack :
+  {
+    . = ALIGN(8);
+    PROVIDE ( end = . );
+    PROVIDE ( _end = . );
+    . = . + _Min_Heap_Size;
+    . = . + _Min_Stack_Size;
+    . = ALIGN(8);
   } >DTCMRAM
 
   /* User_heap_stack section, used to check that there is enough RAM left */

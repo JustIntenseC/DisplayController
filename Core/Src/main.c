@@ -45,6 +45,14 @@
 
 #define H_TOTAL     (H_SYNC_WIDTH + H_FRONT_PORCH + LCD_ACTIVE_WIDTH + H_BACK_PORCH)
 #define V_TOTAL     (V_SYNC_WIDTH + V_FRONT_PORCH + LCD_ACTIVE_HEIGHT + V_BACK_PORCH)
+#define TOTAL_STRIPS  6
+
+#define BYTES_PER_PIXEL 1
+#define STRIP_HEIGHT 400
+#define STRIP_SIZE_BYTES (LCD_ACTIVE_WIDTH * STRIP_HEIGHT)
+#define TOTAL_STRIPS (LCD_ACTIVE_HEIGHT / STRIP_HEIGHT)
+#define FRAME_RATE 1 /*Hz*/
+#define ROW_TIME_US (1000000 / (FRAME_RATE * LCD_ACTIVE_HEIGHT))
 
 
 
@@ -59,10 +67,14 @@
 /* Private variables ---------------------------------------------------------*/
 
 LTDC_HandleTypeDef hltdc;
-uint32_t strip_buffer1 [];
 
 /* USER CODE BEGIN PV */
+uint32_t clut[256];
+static uint8_t strip_buffer1[STRIP_SIZE_BYTES] __attribute__((section(".video_buffers"), aligned(32)));
 
+volatile uint32_t current_strip = 0 ;
+volatile uint8_t need_fill = 0;
+volatile uint8_t active_buffer = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -71,7 +83,8 @@ static void MPU_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_LTDC_Init(void);
 /* USER CODE BEGIN PFP */
-
+void FillStrip(uint8_t* buffer);
+void GenerateTestPattern(uint8_t *buffer, uint32_t strip_idx);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -114,6 +127,15 @@ int main(void)
   MX_LTDC_Init();
   /* USER CODE BEGIN 2 */
 
+
+  FillStrip(strip_buffer1);
+  HAL_LTDC_SetAddress(&hltdc, (uint32_t)strip_buffer1, LTDC_LAYER_1);
+
+  //transmit ltdc
+
+  HAL_LTDC_ProgramLineEvent(&hltdc, STRIP_HEIGHT);
+  HAL_LTDC_Reload(&hltdc, LTDC_RELOAD_IMMEDIATE);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -121,7 +143,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+    __WFI();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -199,7 +221,7 @@ static void MX_LTDC_Init(void)
   /* USER CODE END LTDC_Init 0 */
 
   LTDC_LayerCfgTypeDef pLayerCfg = {0};
-  LTDC_LayerCfgTypeDef pLayerCfg1 = {0};
+
 
   /* USER CODE BEGIN LTDC_Init 1 */
 
@@ -225,45 +247,29 @@ static void MX_LTDC_Init(void)
     Error_Handler();
   }
   pLayerCfg.WindowX0 = 0;
-  pLayerCfg.WindowX1 = 0;
+  pLayerCfg.WindowX1 = LCD_ACTIVE_WIDTH;
   pLayerCfg.WindowY0 = 0;
-  pLayerCfg.WindowY1 = 0;
-  pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_ARGB8888;
-  pLayerCfg.Alpha = 0;
+  pLayerCfg.WindowY1 = LCD_ACTIVE_HEIGHT;
+  pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_L8;
+  pLayerCfg.Alpha = 255;
   pLayerCfg.Alpha0 = 0;
-  pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
-  pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
-  pLayerCfg.FBStartAdress = 0;
-  pLayerCfg.ImageWidth = 0;
-  pLayerCfg.ImageHeight = 0;
+  pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_PAxCA;
+  pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_PAxCA;
+  pLayerCfg.FBStartAdress = (uint32_t)strip_buffer1;
+  pLayerCfg.ImageWidth = LCD_ACTIVE_WIDTH;
+  pLayerCfg.ImageHeight = LCD_ACTIVE_HEIGHT;
   pLayerCfg.Backcolor.Blue = 0;
   pLayerCfg.Backcolor.Green = 0;
   pLayerCfg.Backcolor.Red = 0;
-  if (HAL_LTDC_ConfigLayer(&hltdc, &pLayerCfg, 0) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  pLayerCfg1.WindowX0 = 0;
-  pLayerCfg1.WindowX1 = LCD_ACTIVE_WIDTH;
-  pLayerCfg1.WindowY0 = 0;
-  pLayerCfg1.WindowY1 = LCD_ACTIVE_HEIGHT;
-  pLayerCfg1.PixelFormat = LTDC_PIXEL_FORMAT_L8;
-  pLayerCfg1.Alpha = 255;
-  pLayerCfg1.Alpha0 = 0;
-  pLayerCfg1.BlendingFactor1 = LTDC_BLENDING_FACTOR1_PAxCA;
-  pLayerCfg1.BlendingFactor2 = LTDC_BLENDING_FACTOR2_PAxCA;
-  pLayerCfg1.FBStartAdress = strip_buffer1;
-  pLayerCfg1.ImageWidth = LCD_ACTIVE_WIDTH;
-  pLayerCfg1.ImageHeight = LCD_ACTIVE_HEIGHT;
-  pLayerCfg1.Backcolor.Blue = 0;
-  pLayerCfg1.Backcolor.Green = 0;
-  pLayerCfg1.Backcolor.Red = 0;
-  if (HAL_LTDC_ConfigLayer(&hltdc, &pLayerCfg1, 1) != HAL_OK)
+  if (HAL_LTDC_ConfigLayer(&hltdc, &pLayerCfg, 1) != HAL_OK)
   {
     Error_Handler();
   }
   /* USER CODE BEGIN LTDC_Init 2 */
-
+  for(int i = 0 ; i < 256; i++){
+    clut[i] = i << 16 | i << 8 | i; 
+  }
+  HAL_LTDC_ConfigCLUT(&hltdc, clut, 256, LTDC_LAYER_1);
   /* USER CODE END LTDC_Init 2 */
 
 }
@@ -294,6 +300,32 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void FillStrip(uint8_t *buffer){
+  for(uint32_t row = 0 ; row < STRIP_HEIGHT; row++){
+    for(uint32_t column = 0; column < LCD_ACTIVE_WIDTH; column++){
+      buffer[row*LCD_ACTIVE_WIDTH + column]= 0xFF;
+    }
+  }
+}
+
+
+void LTDC_IRQHandler(void){
+  if(__HAL_LTDC_GET_FLAG(&hltdc, LTDC_FLAG_LI)){
+    __HAL_LTDC_CLEAR_FLAG(&hltdc, LTDC_FLAG_LI);
+    current_strip++;
+    if(current_strip < TOTAL_STRIPS){
+      FillStrip(strip_buffer1);
+      HAL_LTDC_ProgramLineEvent(&hltdc, (current_strip+1) * STRIP_HEIGHT);
+    }
+    else{
+      current_strip = 0;
+      FillStrip(strip_buffer1);
+      HAL_LTDC_ProgramLineEvent(&hltdc, STRIP_HEIGHT);
+    }
+  }
+
+}    
+
 
 /* USER CODE END 4 */
 

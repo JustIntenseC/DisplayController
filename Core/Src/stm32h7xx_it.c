@@ -201,16 +201,16 @@ void SysTick_Handler(void)
 /**
   * @brief This function handles LTDC global interrupt.
   */
-void LTDC_IRQHandler(void)
-{
-  /* USER CODE BEGIN LTDC_IRQn 0 */
+// void LTDC_IRQHandler(void)
+// {
+//   /* USER CODE BEGIN LTDC_IRQn 0 */
 
-  /* USER CODE END LTDC_IRQn 0 */
-  HAL_LTDC_IRQHandler(&hltdc);
-  /* USER CODE BEGIN LTDC_IRQn 1 */
+//   /* USER CODE END LTDC_IRQn 0 */
+//   HAL_LTDC_IRQHandler(&hltdc);
+//   /* USER CODE BEGIN LTDC_IRQn 1 */
 
-  /* USER CODE END LTDC_IRQn 1 */
-}
+//   /* USER CODE END LTDC_IRQn 1 */
+// }
 
 /* USER CODE BEGIN 1 */
 
