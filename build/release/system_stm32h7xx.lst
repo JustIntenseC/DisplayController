@@ -1,0 +1,409 @@
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"system_stm32h7xx.c"
+  15              		.text
+  16              		.section	.text.SystemInit,"ax",%progbits
+  17              		.align	1
+  18              		.global	SystemInit
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  23              	SystemInit:
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26              		@ link register save eliminated.
+  27 0000 314A     		ldr	r2, .L6
+  28 0002 D2F88830 		ldr	r3, [r2, #136]
+  29 0006 43F47003 		orr	r3, r3, #15728640
+  30 000a C2F88830 		str	r3, [r2, #136]
+  31 000e 2F4B     		ldr	r3, .L6+4
+  32 0010 1B68     		ldr	r3, [r3]
+  33 0012 03F00F03 		and	r3, r3, #15
+  34 0016 062B     		cmp	r3, #6
+  35 0018 06D8     		bhi	.L2
+  36 001a 2C4A     		ldr	r2, .L6+4
+  37 001c 1368     		ldr	r3, [r2]
+  38 001e 23F00F03 		bic	r3, r3, #15
+  39 0022 43F00703 		orr	r3, r3, #7
+  40 0026 1360     		str	r3, [r2]
+  41              	.L2:
+  42 0028 294B     		ldr	r3, .L6+8
+  43 002a 1A68     		ldr	r2, [r3]
+  44 002c 42F00102 		orr	r2, r2, #1
+  45 0030 1A60     		str	r2, [r3]
+  46 0032 0022     		movs	r2, #0
+  47 0034 1A61     		str	r2, [r3, #16]
+  48 0036 1968     		ldr	r1, [r3]
+  49 0038 264A     		ldr	r2, .L6+12
+  50 003a 0A40     		ands	r2, r2, r1
+  51 003c 1A60     		str	r2, [r3]
+  52 003e 234B     		ldr	r3, .L6+4
+  53 0040 1B68     		ldr	r3, [r3]
+  54 0042 13F0080F 		tst	r3, #8
+  55 0046 06D0     		beq	.L3
+  56 0048 204A     		ldr	r2, .L6+4
+  57 004a 1368     		ldr	r3, [r2]
+  58 004c 23F00F03 		bic	r3, r3, #15
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s 			page 2
+
+
+  59 0050 43F00703 		orr	r3, r3, #7
+  60 0054 1360     		str	r3, [r2]
+  61              	.L3:
+  62 0056 1E4B     		ldr	r3, .L6+8
+  63 0058 0022     		movs	r2, #0
+  64 005a 9A61     		str	r2, [r3, #24]
+  65 005c DA61     		str	r2, [r3, #28]
+  66 005e 1A62     		str	r2, [r3, #32]
+  67 0060 1D49     		ldr	r1, .L6+16
+  68 0062 9962     		str	r1, [r3, #40]
+  69 0064 1D49     		ldr	r1, .L6+20
+  70 0066 D962     		str	r1, [r3, #44]
+  71 0068 1D49     		ldr	r1, .L6+24
+  72 006a 1963     		str	r1, [r3, #48]
+  73 006c 5A63     		str	r2, [r3, #52]
+  74 006e 9963     		str	r1, [r3, #56]
+  75 0070 DA63     		str	r2, [r3, #60]
+  76 0072 1964     		str	r1, [r3, #64]
+  77 0074 5A64     		str	r2, [r3, #68]
+  78 0076 1968     		ldr	r1, [r3]
+  79 0078 21F48021 		bic	r1, r1, #262144
+  80 007c 1960     		str	r1, [r3]
+  81 007e 1A66     		str	r2, [r3, #96]
+  82 0080 184B     		ldr	r3, .L6+28
+  83 0082 1B68     		ldr	r3, [r3]
+  84 0084 6FF30F03 		bfc	r3, #0, #16
+  85 0088 B3F1005F 		cmp	r3, #536870912
+  86 008c 03D2     		bcs	.L4
+  87 008e 164B     		ldr	r3, .L6+32
+  88 0090 0122     		movs	r2, #1
+  89 0092 C3F80821 		str	r2, [r3, #264]
+  90              	.L4:
+  91 0096 0E4B     		ldr	r3, .L6+8
+  92 0098 D3F8D430 		ldr	r3, [r3, #212]
+  93 009c 13F4805F 		tst	r3, #4096
+  94 00a0 10D1     		bne	.L1
+  95 00a2 0B4B     		ldr	r3, .L6+8
+  96 00a4 D3F8D420 		ldr	r2, [r3, #212]
+  97 00a8 42F48052 		orr	r2, r2, #4096
+  98 00ac C3F8D420 		str	r2, [r3, #212]
+  99 00b0 0E4A     		ldr	r2, .L6+36
+ 100 00b2 43F2D201 		movw	r1, #12498
+ 101 00b6 1160     		str	r1, [r2]
+ 102 00b8 D3F8D420 		ldr	r2, [r3, #212]
+ 103 00bc 22F48052 		bic	r2, r2, #4096
+ 104 00c0 C3F8D420 		str	r2, [r3, #212]
+ 105              	.L1:
+ 106 00c4 7047     		bx	lr
+ 107              	.L7:
+ 108 00c6 00BF     		.align	2
+ 109              	.L6:
+ 110 00c8 00ED00E0 		.word	-536810240
+ 111 00cc 00200052 		.word	1375739904
+ 112 00d0 00440258 		.word	1476543488
+ 113 00d4 7FEDF6EA 		.word	-352916097
+ 114 00d8 00020202 		.word	33686016
+ 115 00dc 0000FF01 		.word	33488896
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s 			page 3
+
+
+ 116 00e0 80020101 		.word	16843392
+ 117 00e4 0010005C 		.word	1543507968
+ 118 00e8 00800051 		.word	1358987264
+ 119 00ec 00400052 		.word	1375748096
+ 121              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+ 122              		.align	1
+ 123              		.global	SystemCoreClockUpdate
+ 124              		.syntax unified
+ 125              		.thumb
+ 126              		.thumb_func
+ 128              	SystemCoreClockUpdate:
+ 129              		@ args = 0, pretend = 0, frame = 0
+ 130              		@ frame_needed = 0, uses_anonymous_args = 0
+ 131              		@ link register save eliminated.
+ 132 0000 10B4     		push	{r4}
+ 133 0002 7B4B     		ldr	r3, .L21
+ 134 0004 1B69     		ldr	r3, [r3, #16]
+ 135 0006 03F03803 		and	r3, r3, #56
+ 136 000a 182B     		cmp	r3, #24
+ 137 000c 00F2D280 		bhi	.L9
+ 138 0010 DFE813F0 		tbh	[pc, r3, lsl #1]
+ 139              	.L11:
+ 140 0014 1B00     		.2byte	(.L14-.L11)/2
+ 141 0016 D000     		.2byte	(.L9-.L11)/2
+ 142 0018 D000     		.2byte	(.L9-.L11)/2
+ 143 001a D000     		.2byte	(.L9-.L11)/2
+ 144 001c D000     		.2byte	(.L9-.L11)/2
+ 145 001e D000     		.2byte	(.L9-.L11)/2
+ 146 0020 D000     		.2byte	(.L9-.L11)/2
+ 147 0022 D000     		.2byte	(.L9-.L11)/2
+ 148 0024 1900     		.2byte	(.L13-.L11)/2
+ 149 0026 D000     		.2byte	(.L9-.L11)/2
+ 150 0028 D000     		.2byte	(.L9-.L11)/2
+ 151 002a D000     		.2byte	(.L9-.L11)/2
+ 152 002c D000     		.2byte	(.L9-.L11)/2
+ 153 002e D000     		.2byte	(.L9-.L11)/2
+ 154 0030 D000     		.2byte	(.L9-.L11)/2
+ 155 0032 D000     		.2byte	(.L9-.L11)/2
+ 156 0034 EC00     		.2byte	(.L19-.L11)/2
+ 157 0036 D000     		.2byte	(.L9-.L11)/2
+ 158 0038 D000     		.2byte	(.L9-.L11)/2
+ 159 003a D000     		.2byte	(.L9-.L11)/2
+ 160 003c D000     		.2byte	(.L9-.L11)/2
+ 161 003e D000     		.2byte	(.L9-.L11)/2
+ 162 0040 D000     		.2byte	(.L9-.L11)/2
+ 163 0042 D000     		.2byte	(.L9-.L11)/2
+ 164 0044 2200     		.2byte	(.L10-.L11)/2
+ 165              		.p2align 1
+ 166              	.L13:
+ 167 0046 6B4A     		ldr	r2, .L21+4
+ 168 0048 BAE0     		b	.L12
+ 169              	.L14:
+ 170 004a 694B     		ldr	r3, .L21
+ 171 004c 1B68     		ldr	r3, [r3]
+ 172 004e C3F3C103 		ubfx	r3, r3, #3, #2
+ 173 0052 694A     		ldr	r2, .L21+8
+ 174 0054 DA40     		lsrs	r2, r2, r3
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s 			page 4
+
+
+ 175 0056 B3E0     		b	.L12
+ 176              	.L10:
+ 177 0058 654B     		ldr	r3, .L21
+ 178 005a 996A     		ldr	r1, [r3, #40]
+ 179 005c 01F00301 		and	r1, r1, #3
+ 180 0060 9C6A     		ldr	r4, [r3, #40]
+ 181 0062 C4F30512 		ubfx	r2, r4, #4, #6
+ 182 0066 D86A     		ldr	r0, [r3, #44]
+ 183 0068 00F00100 		and	r0, r0, #1
+ 184 006c 5B6B     		ldr	r3, [r3, #52]
+ 185 006e C3F3CC03 		ubfx	r3, r3, #3, #13
+ 186 0072 00FB03F3 		mul	r3, r0, r3
+ 187 0076 07EE903A 		vmov	s15, r3	@ int
+ 188 007a F8EE677A 		vcvt.f32.u32	s15, s15
+ 189 007e 14F47C7F 		tst	r4, #1008
+ 190 0082 00F09D80 		beq	.L12
+ 191 0086 0129     		cmp	r1, #1
+ 192 0088 36D0     		beq	.L15
+ 193 008a 0229     		cmp	r1, #2
+ 194 008c 51D0     		beq	.L16
+ 195 008e 0029     		cmp	r1, #0
+ 196 0090 6CD1     		bne	.L17
+ 197 0092 5748     		ldr	r0, .L21
+ 198 0094 0168     		ldr	r1, [r0]
+ 199 0096 C1F3C101 		ubfx	r1, r1, #3, #2
+ 200 009a 574B     		ldr	r3, .L21+8
+ 201 009c CB40     		lsrs	r3, r3, r1
+ 202 009e 07EE103A 		vmov	s14, r3	@ int
+ 203 00a2 F8EE476A 		vcvt.f32.u32	s13, s14
+ 204 00a6 07EE102A 		vmov	s14, r2	@ int
+ 205 00aa B8EE476A 		vcvt.f32.u32	s12, s14
+ 206 00ae 86EE867A 		vdiv.f32	s14, s13, s12
+ 207 00b2 036B     		ldr	r3, [r0, #48]
+ 208 00b4 C3F30803 		ubfx	r3, r3, #0, #9
+ 209 00b8 06EE903A 		vmov	s13, r3	@ int
+ 210 00bc F8EE666A 		vcvt.f32.u32	s13, s13
+ 211 00c0 9FED4E6A 		vldr.32	s12, .L21+12
+ 212 00c4 67EE867A 		vmul.f32	s15, s15, s12
+ 213 00c8 76EEA77A 		vadd.f32	s15, s13, s15
+ 214 00cc F7EE006A 		vmov.f32	s13, #1.0e+0
+ 215 00d0 77EEA67A 		vadd.f32	s15, s15, s13
+ 216 00d4 27EE277A 		vmul.f32	s14, s14, s15
+ 217              	.L18:
+ 218 00d8 454B     		ldr	r3, .L21
+ 219 00da 1B6B     		ldr	r3, [r3, #48]
+ 220 00dc C3F34623 		ubfx	r3, r3, #9, #7
+ 221 00e0 0133     		adds	r3, r3, #1
+ 222 00e2 07EE903A 		vmov	s15, r3	@ int
+ 223 00e6 F8EE677A 		vcvt.f32.u32	s15, s15
+ 224 00ea C7EE276A 		vdiv.f32	s13, s14, s15
+ 225 00ee FCEEE67A 		vcvt.u32.f32	s15, s13
+ 226 00f2 17EE902A 		vmov	r2, s15	@ int
+ 227 00f6 63E0     		b	.L12
+ 228              	.L15:
+ 229 00f8 07EE102A 		vmov	s14, r2	@ int
+ 230 00fc F8EE476A 		vcvt.f32.u32	s13, s14
+ 231 0100 9FED3F6A 		vldr.32	s12, .L21+16
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s 			page 5
+
+
+ 232 0104 86EE267A 		vdiv.f32	s14, s12, s13
+ 233 0108 394B     		ldr	r3, .L21
+ 234 010a 1B6B     		ldr	r3, [r3, #48]
+ 235 010c C3F30803 		ubfx	r3, r3, #0, #9
+ 236 0110 06EE903A 		vmov	s13, r3	@ int
+ 237 0114 F8EE666A 		vcvt.f32.u32	s13, s13
+ 238 0118 9FED386A 		vldr.32	s12, .L21+12
+ 239 011c 67EE867A 		vmul.f32	s15, s15, s12
+ 240 0120 76EEA77A 		vadd.f32	s15, s13, s15
+ 241 0124 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 242 0128 77EEA67A 		vadd.f32	s15, s15, s13
+ 243 012c 27EE277A 		vmul.f32	s14, s14, s15
+ 244 0130 D2E7     		b	.L18
+ 245              	.L16:
+ 246 0132 07EE102A 		vmov	s14, r2	@ int
+ 247 0136 F8EE476A 		vcvt.f32.u32	s13, s14
+ 248 013a 9FED326A 		vldr.32	s12, .L21+20
+ 249 013e 86EE267A 		vdiv.f32	s14, s12, s13
+ 250 0142 2B4B     		ldr	r3, .L21
+ 251 0144 1B6B     		ldr	r3, [r3, #48]
+ 252 0146 C3F30803 		ubfx	r3, r3, #0, #9
+ 253 014a 06EE903A 		vmov	s13, r3	@ int
+ 254 014e F8EE666A 		vcvt.f32.u32	s13, s13
+ 255 0152 9FED2A6A 		vldr.32	s12, .L21+12
+ 256 0156 67EE867A 		vmul.f32	s15, s15, s12
+ 257 015a 76EEA77A 		vadd.f32	s15, s13, s15
+ 258 015e F7EE006A 		vmov.f32	s13, #1.0e+0
+ 259 0162 77EEA67A 		vadd.f32	s15, s15, s13
+ 260 0166 27EE277A 		vmul.f32	s14, s14, s15
+ 261 016a B5E7     		b	.L18
+ 262              	.L17:
+ 263 016c 2048     		ldr	r0, .L21
+ 264 016e 0168     		ldr	r1, [r0]
+ 265 0170 C1F3C101 		ubfx	r1, r1, #3, #2
+ 266 0174 204B     		ldr	r3, .L21+8
+ 267 0176 CB40     		lsrs	r3, r3, r1
+ 268 0178 07EE103A 		vmov	s14, r3	@ int
+ 269 017c F8EE476A 		vcvt.f32.u32	s13, s14
+ 270 0180 07EE102A 		vmov	s14, r2	@ int
+ 271 0184 B8EE476A 		vcvt.f32.u32	s12, s14
+ 272 0188 86EE867A 		vdiv.f32	s14, s13, s12
+ 273 018c 036B     		ldr	r3, [r0, #48]
+ 274 018e C3F30803 		ubfx	r3, r3, #0, #9
+ 275 0192 06EE903A 		vmov	s13, r3	@ int
+ 276 0196 F8EE666A 		vcvt.f32.u32	s13, s13
+ 277 019a 9FED186A 		vldr.32	s12, .L21+12
+ 278 019e 67EE867A 		vmul.f32	s15, s15, s12
+ 279 01a2 76EEA77A 		vadd.f32	s15, s13, s15
+ 280 01a6 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 281 01aa 77EEA67A 		vadd.f32	s15, s15, s13
+ 282 01ae 27EE277A 		vmul.f32	s14, s14, s15
+ 283 01b2 91E7     		b	.L18
+ 284              	.L9:
+ 285 01b4 0E4B     		ldr	r3, .L21
+ 286 01b6 1B68     		ldr	r3, [r3]
+ 287 01b8 C3F3C103 		ubfx	r3, r3, #3, #2
+ 288 01bc 0E4A     		ldr	r2, .L21+8
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s 			page 6
+
+
+ 289 01be DA40     		lsrs	r2, r2, r3
+ 290              	.L12:
+ 291 01c0 0B48     		ldr	r0, .L21
+ 292 01c2 8369     		ldr	r3, [r0, #24]
+ 293 01c4 C3F30323 		ubfx	r3, r3, #8, #4
+ 294 01c8 0F49     		ldr	r1, .L21+24
+ 295 01ca CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+ 296 01cc DA40     		lsrs	r2, r2, r3
+ 297 01ce 8369     		ldr	r3, [r0, #24]
+ 298 01d0 03F00F03 		and	r3, r3, #15
+ 299 01d4 CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+ 300 01d6 03F01F03 		and	r3, r3, #31
+ 301 01da 22FA03F3 		lsr	r3, r2, r3
+ 302 01de 0B49     		ldr	r1, .L21+28
+ 303 01e0 0B60     		str	r3, [r1]
+ 304 01e2 0B4B     		ldr	r3, .L21+32
+ 305 01e4 1A60     		str	r2, [r3]
+ 306 01e6 5DF8044B 		ldr	r4, [sp], #4
+ 307 01ea 7047     		bx	lr
+ 308              	.L19:
+ 309 01ec 094A     		ldr	r2, .L21+36
+ 310 01ee E7E7     		b	.L12
+ 311              	.L22:
+ 312              		.align	2
+ 313              	.L21:
+ 314 01f0 00440258 		.word	1476543488
+ 315 01f4 00093D00 		.word	4000000
+ 316 01f8 0090D003 		.word	64000000
+ 317 01fc 00000039 		.word	956301312
+ 318 0200 0024744A 		.word	1249125376
+ 319 0204 20BCBE4B 		.word	1270791200
+ 320 0208 00000000 		.word	D1CorePrescTable
+ 321 020c 00000000 		.word	SystemD2Clock
+ 322 0210 00000000 		.word	SystemCoreClock
+ 323 0214 40787D01 		.word	25000000
+ 325              		.section	.text.ExitRun0Mode,"ax",%progbits
+ 326              		.align	1
+ 327              		.global	ExitRun0Mode
+ 328              		.syntax unified
+ 329              		.thumb
+ 330              		.thumb_func
+ 332              	ExitRun0Mode:
+ 333              		@ args = 0, pretend = 0, frame = 0
+ 334              		@ frame_needed = 0, uses_anonymous_args = 0
+ 335              		@ link register save eliminated.
+ 336 0000 054A     		ldr	r2, .L25
+ 337 0002 D368     		ldr	r3, [r2, #12]
+ 338 0004 43F00203 		orr	r3, r3, #2
+ 339 0008 D360     		str	r3, [r2, #12]
+ 340              	.L24:
+ 341 000a 034B     		ldr	r3, .L25
+ 342 000c 5B68     		ldr	r3, [r3, #4]
+ 343 000e 13F4005F 		tst	r3, #8192
+ 344 0012 FAD0     		beq	.L24
+ 345 0014 7047     		bx	lr
+ 346              	.L26:
+ 347 0016 00BF     		.align	2
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s 			page 7
+
+
+ 348              	.L25:
+ 349 0018 00480258 		.word	1476544512
+ 351              		.global	D1CorePrescTable
+ 352              		.section	.rodata.D1CorePrescTable,"a"
+ 353              		.align	2
+ 356              	D1CorePrescTable:
+ 357 0000 00000000 		.ascii	"\000\000\000\000\001\002\003\004\001\002\003\004\006"
+ 357      01020304 
+ 357      01020304 
+ 357      06
+ 358 000d 070809   		.ascii	"\007\010\011"
+ 359              		.global	SystemD2Clock
+ 360              		.section	.data.SystemD2Clock,"aw"
+ 361              		.align	2
+ 364              	SystemD2Clock:
+ 365 0000 0090D003 		.word	64000000
+ 366              		.global	SystemCoreClock
+ 367              		.section	.data.SystemCoreClock,"aw"
+ 368              		.align	2
+ 371              	SystemCoreClock:
+ 372 0000 0090D003 		.word	64000000
+ 373              		.ident	"GCC: (xPack GNU Arm Embedded GCC arm64) 14.2.1 20241119"
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 system_stm32h7xx.c
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:17     .text.SystemInit:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:23     .text.SystemInit:00000000 SystemInit
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:110    .text.SystemInit:000000c8 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:122    .text.SystemCoreClockUpdate:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:128    .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:140    .text.SystemCoreClockUpdate:00000014 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:165    .text.SystemCoreClockUpdate:00000046 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:314    .text.SystemCoreClockUpdate:000001f0 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:356    .rodata.D1CorePrescTable:00000000 D1CorePrescTable
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:364    .data.SystemD2Clock:00000000 SystemD2Clock
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:371    .data.SystemCoreClock:00000000 SystemCoreClock
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:326    .text.ExitRun0Mode:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:332    .text.ExitRun0Mode:00000000 ExitRun0Mode
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:349    .text.ExitRun0Mode:00000018 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:353    .rodata.D1CorePrescTable:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:361    .data.SystemD2Clock:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccHdLViG.s:368    .data.SystemCoreClock:00000000 $d
+
+NO UNDEFINED SYMBOLS

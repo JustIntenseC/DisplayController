@@ -48,7 +48,7 @@
 #define TOTAL_STRIPS  6
 
 #define BYTES_PER_PIXEL 1
-#define STRIP_HEIGHT 400
+#define STRIP_HEIGHT 200
 #define STRIP_SIZE_BYTES (LCD_ACTIVE_WIDTH * STRIP_HEIGHT)
 #define TOTAL_STRIPS (LCD_ACTIVE_HEIGHT / STRIP_HEIGHT)
 #define FRAME_RATE 1 /*Hz*/
@@ -70,8 +70,8 @@ LTDC_HandleTypeDef hltdc;
 
 /* USER CODE BEGIN PV */
 uint32_t clut[256];
-static uint8_t strip_buffer1[STRIP_SIZE_BYTES] __attribute__((section(".video_buffers"), aligned(32)));
-
+static uint8_t buffer0[STRIP_SIZE_BYTES] __attribute__((section(".video_buffers"), aligned(32)));
+static uint8_t buffer1[STRIP_SIZE_BYTES] __attribute__((section(".video_buffers"), aligned(32)));
 volatile uint32_t current_strip = 0 ;
 volatile uint8_t need_fill = 0;
 volatile uint8_t active_buffer = 0;
@@ -126,15 +126,21 @@ int main(void)
   MX_GPIO_Init();
   MX_LTDC_Init();
   /* USER CODE BEGIN 2 */
+  // 1. Заполняем первый буфер данными для полосы 0
+    FillStrip(buffer0);    // функция FillStrip заполняет буфер 256 КБ
 
+    // 2. Указываем LTDC адрес первого буфера
+    HAL_LTDC_SetAddress(&hltdc, (uint32_t)buffer0, LTDC_LAYER_1);
+    active_buffer = 0;
 
-  FillStrip(strip_buffer1);
-  HAL_LTDC_SetAddress(&hltdc, (uint32_t)strip_buffer1, LTDC_LAYER_1);
+    // 3. Программируем прерывание на конец первой полосы (200-я строка)
+    HAL_LTDC_ProgramLineEvent(&hltdc, STRIP_HEIGHT);
 
-  //transmit ltdc
+    // 4. Включаем прерывание в NVIC
+    HAL_NVIC_EnableIRQ(LTDC_IRQn);
 
-  HAL_LTDC_ProgramLineEvent(&hltdc, STRIP_HEIGHT);
-  HAL_LTDC_Reload(&hltdc, LTDC_RELOAD_IMMEDIATE);
+    // 5. Запускаем LTDC
+    HAL_LTDC_Reload(&hltdc, LTDC_RELOAD_IMMEDIATE);
 
   /* USER CODE END 2 */
 
@@ -255,7 +261,7 @@ static void MX_LTDC_Init(void)
   pLayerCfg.Alpha0 = 0;
   pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_PAxCA;
   pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_PAxCA;
-  pLayerCfg.FBStartAdress = (uint32_t)strip_buffer1;
+  pLayerCfg.FBStartAdress = (uint32_t)buffer0;
   pLayerCfg.ImageWidth = LCD_ACTIVE_WIDTH;
   pLayerCfg.ImageHeight = LCD_ACTIVE_HEIGHT;
   pLayerCfg.Backcolor.Blue = 0;
@@ -308,23 +314,57 @@ void FillStrip(uint8_t *buffer){
   }
 }
 
+void LTDC_IRQHandler(void)
+{
+    if (__HAL_LTDC_GET_FLAG(&hltdc, LTDC_FLAG_LI))
+    {
+        __HAL_LTDC_CLEAR_FLAG(&hltdc, LTDC_FLAG_LI);
 
-void LTDC_IRQHandler(void){
-  if(__HAL_LTDC_GET_FLAG(&hltdc, LTDC_FLAG_LI)){
-    __HAL_LTDC_CLEAR_FLAG(&hltdc, LTDC_FLAG_LI);
-    current_strip++;
-    if(current_strip < TOTAL_STRIPS){
-      FillStrip(strip_buffer1);
-      HAL_LTDC_ProgramLineEvent(&hltdc, (current_strip+1) * STRIP_HEIGHT);
-    }
-    else{
-      current_strip = 0;
-      FillStrip(strip_buffer1);
-      HAL_LTDC_ProgramLineEvent(&hltdc, STRIP_HEIGHT);
-    }
-  }
+        current_strip++;   // переходим к следующей полосе
 
-}    
+        if (current_strip < TOTAL_STRIPS)   // 0..11
+        {
+            // ---- 1. Переключаем LTDC на другой буфер (уже заполненный) ----
+            if (active_buffer == 0)
+                HAL_LTDC_SetAddress(&hltdc, (uint32_t)buffer1, LTDC_LAYER_1);
+            else
+                HAL_LTDC_SetAddress(&hltdc, (uint32_t)buffer0, LTDC_LAYER_1);
+
+            // ---- 2. Инвертируем флаг активного буфера ----
+            active_buffer ^= 1;
+
+            // ---- 3. Программируем следующее прерывание (на конец следующей полосы) ----
+            HAL_LTDC_ProgramLineEvent(&hltdc, (current_strip + 1) * STRIP_HEIGHT);
+
+            // ---- 4. Заполняем освободившийся буфер данными для будущей полосы ----
+            if (active_buffer == 0)
+                FillStrip(buffer0);   // current_strip уже увеличен
+            else
+                FillStrip(buffer1);
+        }
+        else
+        {
+            // Конец кадра: сбрасываем счётчик, начинаем новый кадр
+            current_strip = 0;
+
+            // Переключаем LTDC на другой буфер (для первой полосы нового кадра)
+            if (active_buffer == 0)
+                HAL_LTDC_SetAddress(&hltdc, (uint32_t)buffer1, LTDC_LAYER_1);
+            else
+                HAL_LTDC_SetAddress(&hltdc, (uint32_t)buffer0, LTDC_LAYER_1);
+            active_buffer ^= 1;
+
+            // Программируем прерывание на конец первой полосы нового кадра
+            HAL_LTDC_ProgramLineEvent(&hltdc, STRIP_HEIGHT);
+
+            // Заполняем освободившийся буфер для первой полосы нового кадра
+            if (active_buffer == 0)
+                FillStrip(buffer0);
+            else
+                FillStrip(buffer1);
+        }
+    }
+}  
 
 
 /* USER CODE END 4 */
