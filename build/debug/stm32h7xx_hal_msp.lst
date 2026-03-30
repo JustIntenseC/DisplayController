@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
   29:Core/Src/stm32h7xx_hal_msp.c **** 
   30:Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE END TD */
   31:Core/Src/stm32h7xx_hal_msp.c **** 
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 2
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 2
 
 
   32:Core/Src/stm32h7xx_hal_msp.c **** /* Private define ------------------------------------------------------------*/
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
   43              		.loc 1 70 3 view .LVU4
   44 0010 D3F8F430 		ldr	r3, [r3, #244]
   45 0014 03F00203 		and	r3, r3, #2
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 3
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 3
 
 
   46 0018 0193     		str	r3, [sp, #4]
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
   86              		.cfi_offset 14, -4
   87 0004 BFB0     		sub	sp, sp, #252
   88              		.cfi_def_cfa_offset 280
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 4
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 4
 
 
   89 0006 0446     		mov	r4, r0
@@ -222,10 +222,10 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
   99:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3N = 4;
  100:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3P = 2;
  101:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3Q = 2;
- 102:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3R = 80;
+ 102:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3R = 26;
  103:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_3;
  104:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3VCOSEL = RCC_PLL3VCOWIDE;
- 105:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3FRACN = 4608.0;
+ 105:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3FRACN = 512.0;
  106:Core/Src/stm32h7xx_hal_msp.c ****     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
  107:Core/Src/stm32h7xx_hal_msp.c ****     {
  108:Core/Src/stm32h7xx_hal_msp.c ****       Error_Handler();
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  115:Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_GPIOF_CLK_ENABLE();
  116:Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_GPIOC_CLK_ENABLE();
  117:Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_GPIOA_CLK_ENABLE();
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 5
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 5
 
 
  118:Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  172:Core/Src/stm32h7xx_hal_msp.c **** 
  173:Core/Src/stm32h7xx_hal_msp.c ****     GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4
  174:Core/Src/stm32h7xx_hal_msp.c ****                           |GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_10;
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 6
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 6
 
 
  175:Core/Src/stm32h7xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  124              		.loc 1 97 5 is_stmt 1 view .LVU19
   97:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3M = 1;
  125              		.loc 1 97 46 is_stmt 0 view .LVU20
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 7
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 7
 
 
  126 002a 4FF00052 		mov	r2, #536870912
@@ -382,16 +382,16 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  138              		.loc 1 100 36 is_stmt 0 view .LVU26
  139 003c 0223     		movs	r3, #2
  140 003e 1493     		str	r3, [sp, #80]
- 101:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3R = 80;
+ 101:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3R = 26;
  141              		.loc 1 101 5 is_stmt 1 view .LVU27
- 101:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3R = 80;
+ 101:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3R = 26;
  142              		.loc 1 101 36 is_stmt 0 view .LVU28
  143 0040 1593     		str	r3, [sp, #84]
  102:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_3;
  144              		.loc 1 102 5 is_stmt 1 view .LVU29
  102:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_3;
  145              		.loc 1 102 36 is_stmt 0 view .LVU30
- 146 0042 5023     		movs	r3, #80
+ 146 0042 1A23     		movs	r3, #26
  147 0044 1693     		str	r3, [sp, #88]
  103:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3VCOSEL = RCC_PLL3VCOWIDE;
  148              		.loc 1 103 5 is_stmt 1 view .LVU31
@@ -399,13 +399,13 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  149              		.loc 1 103 38 is_stmt 0 view .LVU32
  150 0046 4FF44063 		mov	r3, #3072
  151 004a 1793     		str	r3, [sp, #92]
- 104:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3FRACN = 4608.0;
+ 104:Core/Src/stm32h7xx_hal_msp.c ****     PeriphClkInitStruct.PLL3.PLL3FRACN = 512.0;
  152              		.loc 1 104 5 is_stmt 1 view .LVU33
  105:Core/Src/stm32h7xx_hal_msp.c ****     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
  153              		.loc 1 105 5 view .LVU34
  105:Core/Src/stm32h7xx_hal_msp.c ****     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
  154              		.loc 1 105 40 is_stmt 0 view .LVU35
- 155 004c 4FF49053 		mov	r3, #4608
+ 155 004c 4FF40073 		mov	r3, #512
  156 0050 1993     		str	r3, [sp, #100]
  106:Core/Src/stm32h7xx_hal_msp.c ****     {
  157              		.loc 1 106 5 is_stmt 1 view .LVU36
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  162              		.loc 1 106 8 discriminator 1 view .LVU38
  163 0058 0028     		cmp	r0, #0
  164 005a 40F0C880 		bne	.L10
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 8
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 8
 
 
  165              	.L7:
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  115:Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_GPIOC_CLK_ENABLE();
  204              		.loc 1 115 5 view .LVU54
  205 009c D3F8E020 		ldr	r2, [r3, #224]
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 9
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 9
 
 
  206 00a0 02F02002 		and	r2, r2, #32
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  244              		.loc 1 118 5 view .LVU70
  118:Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_GPIOD_CLK_ENABLE();
  245              		.loc 1 118 5 view .LVU71
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 10
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 10
 
 
  246 00d8 D3F8E020 		ldr	r2, [r3, #224]
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  120:Core/Src/stm32h7xx_hal_msp.c ****     /**LTDC GPIO Configuration
  286              		.loc 1 120 5 view .LVU86
  151:Core/Src/stm32h7xx_hal_msp.c ****                           |GPIO_PIN_12|GPIO_PIN_14|GPIO_PIN_15;
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 11
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 11
 
 
  287              		.loc 1 151 5 view .LVU87
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  162:Core/Src/stm32h7xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF14_LTDC;
  324              		.loc 1 162 5 is_stmt 1 view .LVU105
  162:Core/Src/stm32h7xx_hal_msp.c ****     GPIO_InitStruct.Alternate = GPIO_AF14_LTDC;
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 12
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 12
 
 
  325              		.loc 1 162 27 is_stmt 0 view .LVU106
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  361              		.loc 1 175 26 is_stmt 0 view .LVU124
  362 0172 3A96     		str	r6, [sp, #232]
  176:Core/Src/stm32h7xx_hal_msp.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 13
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 13
 
 
  363              		.loc 1 176 5 is_stmt 1 view .LVU125
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  188:Core/Src/stm32h7xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
  400              		.loc 1 188 5 view .LVU143
  188:Core/Src/stm32h7xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 14
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 14
 
 
  401              		.loc 1 188 25 is_stmt 0 view .LVU144
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  200:Core/Src/stm32h7xx_hal_msp.c **** 
  436              		.loc 1 200 5 is_stmt 1 view .LVU164
  437 01be 2946     		mov	r1, r5
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 15
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 15
 
 
  438 01c0 1248     		ldr	r0, .L11+24
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  478              	.LVL18:
  479 01f2 34E7     		b	.L7
  480              	.L12:
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 16
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 16
 
 
  481              		.align	2
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  233:Core/Src/stm32h7xx_hal_msp.c ****     /* Peripheral clock disable */
  234:Core/Src/stm32h7xx_hal_msp.c ****     __HAL_RCC_LTDC_CLK_DISABLE();
  235:Core/Src/stm32h7xx_hal_msp.c **** 
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 17
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 17
 
 
  236:Core/Src/stm32h7xx_hal_msp.c ****     /**LTDC GPIO Configuration
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  290:Core/Src/stm32h7xx_hal_msp.c **** }
  523              		.loc 1 290 1 view .LVU185
  524 000a 08BD     		pop	{r3, pc}
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 18
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 18
 
 
  525              	.LVL21:
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  569              		.loc 1 284 5 view .LVU195
  570 0060 5820     		movs	r0, #88
  571 0062 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 19
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 19
 
 
  572              	.LVL30:
@@ -1110,20 +1110,20 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 1
  599              		.file 9 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
  600              		.file 10 "Core/Inc/main.h"
  601              		.file 11 "<built-in>"
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s 			page 20
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s 			page 20
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32h7xx_hal_msp.c
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s:20     .text.HAL_MspInit:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s:26     .text.HAL_MspInit:00000000 HAL_MspInit
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s:59     .text.HAL_MspInit:00000020 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s:64     .text.HAL_LTDC_MspInit:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s:70     .text.HAL_LTDC_MspInit:00000000 HAL_LTDC_MspInit
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s:483    .text.HAL_LTDC_MspInit:000001f4 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s:496    .text.HAL_LTDC_MspDeInit:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s:502    .text.HAL_LTDC_MspDeInit:00000000 HAL_LTDC_MspDeInit
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cc0qbGpB.s:578    .text.HAL_LTDC_MspDeInit:00000068 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s:20     .text.HAL_MspInit:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s:26     .text.HAL_MspInit:00000000 HAL_MspInit
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s:59     .text.HAL_MspInit:00000020 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s:64     .text.HAL_LTDC_MspInit:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s:70     .text.HAL_LTDC_MspInit:00000000 HAL_LTDC_MspInit
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s:483    .text.HAL_LTDC_MspInit:000001f4 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s:496    .text.HAL_LTDC_MspDeInit:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s:502    .text.HAL_LTDC_MspDeInit:00000000 HAL_LTDC_MspDeInit
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccfEea6P.s:578    .text.HAL_LTDC_MspDeInit:00000068 $d
 
 UNDEFINED SYMBOLS
 memset

@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
   30:Core/Src/main.c **** /* USER CODE END PTD */
   31:Core/Src/main.c **** 
   32:Core/Src/main.c **** /* Private define ------------------------------------------------------------*/
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 2
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 2
 
 
   33:Core/Src/main.c **** /* USER CODE BEGIN PD */
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
   87:Core/Src/main.c **** void GenerateTestPattern(uint8_t *buffer, uint32_t strip_idx);
   88:Core/Src/main.c **** /* USER CODE END PFP */
   89:Core/Src/main.c **** 
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 3
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 3
 
 
   90:Core/Src/main.c **** /* Private user code ---------------------------------------------------------*/
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  144:Core/Src/main.c **** 
  145:Core/Src/main.c ****   /* USER CODE END 2 */
  146:Core/Src/main.c **** 
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 4
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 4
 
 
  147:Core/Src/main.c ****   /* Infinite loop */
@@ -238,17 +238,17 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  201:Core/Src/main.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2
  202:Core/Src/main.c ****                               |RCC_CLOCKTYPE_D3PCLK1|RCC_CLOCKTYPE_D1PCLK1;
  203:Core/Src/main.c ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 5
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 5
 
 
  204:Core/Src/main.c ****   RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;
- 205:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV2;
- 206:Core/Src/main.c ****   RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV4;
- 207:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV4;
+ 205:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV4;
+ 206:Core/Src/main.c ****   RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
+ 207:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;
  208:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
  209:Core/Src/main.c ****   RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
  210:Core/Src/main.c **** 
- 211:Core/Src/main.c ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+ 211:Core/Src/main.c ****   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
  212:Core/Src/main.c ****   {
  213:Core/Src/main.c ****     Error_Handler();
  214:Core/Src/main.c ****   }
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  258:Core/Src/main.c ****   pLayerCfg.WindowY1 = LCD_ACTIVE_HEIGHT;
  259:Core/Src/main.c ****   pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_L8;
  260:Core/Src/main.c ****   pLayerCfg.Alpha = 255;
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 6
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 6
 
 
  261:Core/Src/main.c ****   pLayerCfg.Alpha0 = 0;
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
   46              		.loc 1 295 3 view .LVU5
   47 001a 019A     		ldr	r2, [sp, #4]
   48              	.LBE4:
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 7
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 7
 
 
   49              		.loc 1 295 3 view .LVU6
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
   99 0064 D3F8E020 		ldr	r2, [r3, #224]
  100 0068 42F00202 		orr	r2, r2, #2
  101 006c C3F8E020 		str	r2, [r3, #224]
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 8
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 8
 
 
  102              		.loc 1 299 3 view .LVU28
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  149              		.cfi_endproc
  150              	.LFE147:
  152              		.section	.text.MPU_Config,"ax",%progbits
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 9
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 9
 
 
  153              		.align	1
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  355:Core/Src/main.c ****             active_buffer ^= 1;
  356:Core/Src/main.c **** 
  357:Core/Src/main.c ****             // Программируем прерывание на конец первой пол�
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 10
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 10
 
 
  358:Core/Src/main.c ****             HAL_LTDC_ProgramLineEvent(&hltdc, STRIP_HEIGHT);
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  187 0018 8DF80140 		strb	r4, [sp, #1]
  385:Core/Src/main.c ****   MPU_InitStruct.BaseAddress = 0x0;
  188              		.loc 1 385 3 is_stmt 1 view .LVU52
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 11
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 11
 
 
  189              		.loc 1 385 30 is_stmt 0 view .LVU53
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  229 0050 30BD     		pop	{r4, r5, pc}
  230              		.cfi_endproc
  231              	.LFE150:
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 12
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 12
 
 
  233              		.section	.text.FillStrip,"ax",%progbits
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  276              	.LBE12:
  310:Core/Src/main.c ****     for(uint32_t column = 0; column < LCD_ACTIVE_WIDTH; column++){
  277              		.loc 1 310 49 discriminator 2 view .LVU85
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 13
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 13
 
 
  278 001c 0131     		adds	r1, r1, #1
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  323:Core/Src/main.c **** 
  325              		.loc 1 323 9 view .LVU95
  323:Core/Src/main.c **** 
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 14
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 14
 
 
  326              		.loc 1 323 22 is_stmt 0 view .LVU96
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  367              		.loc 1 340 16 view .LVU109
  368 004c 4BB9     		cbnz	r3, .L18
  341:Core/Src/main.c ****             else
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 15
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 15
 
 
  369              		.loc 1 341 17 is_stmt 1 view .LVU110
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  412 0082 83F00103 		eor	r3, r3, #1
  413 0086 2370     		strb	r3, [r4]
  358:Core/Src/main.c **** 
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 16
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 16
 
 
  414              		.loc 1 358 13 is_stmt 1 view .LVU122
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  462              		.global	Error_Handler
  463              		.syntax unified
  464              		.thumb
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 17
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 17
 
 
  465              		.thumb_func
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
   32:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wunused-parameter"
   33:Drivers/CMSIS/Include/cmsis_gcc.h **** 
   34:Drivers/CMSIS/Include/cmsis_gcc.h **** /* Fallback for __has_builtin */
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 18
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 18
 
 
   35:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __has_builtin
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
   89:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
   90:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
   91:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 19
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 19
 
 
   92:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(add
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  146:Drivers/CMSIS/Include/cmsis_gcc.h ****   extern const __copy_table_t __copy_table_start__;
  147:Drivers/CMSIS/Include/cmsis_gcc.h ****   extern const __copy_table_t __copy_table_end__;
  148:Drivers/CMSIS/Include/cmsis_gcc.h ****   extern const __zero_table_t __zero_table_start__;
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 20
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 20
 
 
  149:Drivers/CMSIS/Include/cmsis_gcc.h ****   extern const __zero_table_t __zero_table_end__;
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  203:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Disable IRQ Interrupts
  204:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
  205:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 21
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 21
 
 
  206:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  235:Core/Src/main.c ****   hltdc.Init.HSPolarity = LTDC_HSPOLARITY_AL;
  523              		.loc 1 235 18 is_stmt 0 view .LVU141
  524 000e 3048     		ldr	r0, .L38
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 22
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 22
 
 
  525 0010 304B     		ldr	r3, .L38+4
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  559              		.loc 1 245 33 is_stmt 0 view .LVU161
  560 0030 40F6C312 		movw	r2, #2499
  561 0034 8262     		str	r2, [r0, #40]
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 23
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 23
 
 
  246:Core/Src/main.c ****   hltdc.Init.TotalHeigh = V_TOTAL - 1;
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  596              		.loc 1 258 3 is_stmt 1 view .LVU181
  258:Core/Src/main.c ****   pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_L8;
  597              		.loc 1 258 22 is_stmt 0 view .LVU182
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 24
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 24
 
 
  598 0060 4FF41662 		mov	r2, #2400
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  268:Core/Src/main.c ****   pLayerCfg.Backcolor.Red = 0;
  633              		.loc 1 268 3 is_stmt 1 view .LVU202
  268:Core/Src/main.c ****   pLayerCfg.Backcolor.Red = 0;
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 25
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 25
 
 
  634              		.loc 1 268 29 is_stmt 0 view .LVU203
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  674 00b4 0133     		adds	r3, r3, #1
  675              	.LVL23:
  676              	.L32:
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 26
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 26
 
 
  275:Core/Src/main.c ****     clut[i] = i << 16 | i << 8 | i; 
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  726 0006 0021     		movs	r1, #0
  727 0008 09A8     		add	r0, sp, #36
  728 000a FFF7FEFF 		bl	memset
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 27
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 27
 
 
  729              	.LVL26:
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  769 0046 009B     		ldr	r3, [sp]
  770              	.LBE18:
  173:Core/Src/main.c **** 
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 28
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 28
 
 
  771              		.loc 1 173 3 view .LVU239
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  806              		.loc 1 186 30 is_stmt 0 view .LVU258
  807 0068 4FF4C871 		mov	r1, #400
  808 006c 1591     		str	r1, [sp, #84]
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 29
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 29
 
 
  187:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLQ = 2;
@@ -1721,7 +1721,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  832              	.LVL29:
  193:Core/Src/main.c ****   {
  833              		.loc 1 193 6 discriminator 1 view .LVU273
- 834 0082 B8B9     		cbnz	r0, .L45
+ 834 0082 B0B9     		cbnz	r0, .L45
  200:Core/Src/main.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2
  835              		.loc 1 200 3 is_stmt 1 view .LVU274
  200:Core/Src/main.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2
@@ -1734,26 +1734,26 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  840              		.loc 1 203 34 is_stmt 0 view .LVU277
  841 0088 0323     		movs	r3, #3
  842 008a 0293     		str	r3, [sp, #8]
- 204:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV2;
+ 204:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV4;
  843              		.loc 1 204 3 is_stmt 1 view .LVU278
- 204:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV2;
+ 204:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV4;
  844              		.loc 1 204 35 is_stmt 0 view .LVU279
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 30
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 30
 
 
  845 008c 0023     		movs	r3, #0
  846 008e 0393     		str	r3, [sp, #12]
- 205:Core/Src/main.c ****   RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV4;
+ 205:Core/Src/main.c ****   RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
  847              		.loc 1 205 3 is_stmt 1 view .LVU280
- 205:Core/Src/main.c ****   RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV4;
+ 205:Core/Src/main.c ****   RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
  848              		.loc 1 205 35 is_stmt 0 view .LVU281
- 849 0090 0823     		movs	r3, #8
+ 849 0090 0923     		movs	r3, #9
  850 0092 0493     		str	r3, [sp, #16]
- 206:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV4;
+ 206:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;
  851              		.loc 1 206 3 is_stmt 1 view .LVU282
- 206:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV4;
+ 206:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;
  852              		.loc 1 206 36 is_stmt 0 view .LVU283
- 853 0094 5023     		movs	r3, #80
+ 853 0094 4023     		movs	r3, #64
  854 0096 0593     		str	r3, [sp, #20]
  207:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
  855              		.loc 1 207 3 is_stmt 1 view .LVU284
@@ -1764,254 +1764,253 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 1
  858              		.loc 1 208 3 is_stmt 1 view .LVU286
  208:Core/Src/main.c ****   RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
  859              		.loc 1 208 36 is_stmt 0 view .LVU287
- 860 009a 4FF48063 		mov	r3, #1024
- 861 009e 0793     		str	r3, [sp, #28]
+ 860 009a 4FF48062 		mov	r2, #1024
+ 861 009e 0792     		str	r2, [sp, #28]
  209:Core/Src/main.c **** 
  862              		.loc 1 209 3 is_stmt 1 view .LVU288
  209:Core/Src/main.c **** 
  863              		.loc 1 209 36 is_stmt 0 view .LVU289
- 864 00a0 4023     		movs	r3, #64
- 865 00a2 0893     		str	r3, [sp, #32]
+ 864 00a0 0893     		str	r3, [sp, #32]
  211:Core/Src/main.c ****   {
- 866              		.loc 1 211 3 is_stmt 1 view .LVU290
+ 865              		.loc 1 211 3 is_stmt 1 view .LVU290
  211:Core/Src/main.c ****   {
- 867              		.loc 1 211 7 is_stmt 0 view .LVU291
- 868 00a4 0221     		movs	r1, #2
- 869 00a6 01A8     		add	r0, sp, #4
- 870 00a8 FFF7FEFF 		bl	HAL_RCC_ClockConfig
- 871              	.LVL30:
+ 866              		.loc 1 211 7 is_stmt 0 view .LVU291
+ 867 00a2 0121     		movs	r1, #1
+ 868 00a4 01A8     		add	r0, sp, #4
+ 869 00a6 FFF7FEFF 		bl	HAL_RCC_ClockConfig
+ 870              	.LVL30:
  211:Core/Src/main.c ****   {
- 872              		.loc 1 211 6 discriminator 1 view .LVU292
- 873 00ac 20B9     		cbnz	r0, .L46
+ 871              		.loc 1 211 6 discriminator 1 view .LVU292
+ 872 00aa 20B9     		cbnz	r0, .L46
  215:Core/Src/main.c **** 
- 874              		.loc 1 215 1 view .LVU293
- 875 00ae 1DB0     		add	sp, sp, #116
- 876              		.cfi_remember_state
- 877              		.cfi_def_cfa_offset 4
- 878              		@ sp needed
- 879 00b0 5DF804FB 		ldr	pc, [sp], #4
- 880              	.L45:
- 881              		.cfi_restore_state
+ 873              		.loc 1 215 1 view .LVU293
+ 874 00ac 1DB0     		add	sp, sp, #116
+ 875              		.cfi_remember_state
+ 876              		.cfi_def_cfa_offset 4
+ 877              		@ sp needed
+ 878 00ae 5DF804FB 		ldr	pc, [sp], #4
+ 879              	.L45:
+ 880              		.cfi_restore_state
  195:Core/Src/main.c ****   }
- 882              		.loc 1 195 5 is_stmt 1 view .LVU294
- 883 00b4 FFF7FEFF 		bl	Error_Handler
- 884              	.LVL31:
- 885              	.L46:
+ 881              		.loc 1 195 5 is_stmt 1 view .LVU294
+ 882 00b2 FFF7FEFF 		bl	Error_Handler
+ 883              	.LVL31:
+ 884              	.L46:
  213:Core/Src/main.c ****   }
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 31
+ 885              		.loc 1 213 5 view .LVU295
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 31
 
 
- 886              		.loc 1 213 5 view .LVU295
- 887 00b8 FFF7FEFF 		bl	Error_Handler
- 888              	.LVL32:
- 889              	.L48:
- 890              		.align	2
- 891              	.L47:
- 892 00bc 00040058 		.word	1476396032
- 893 00c0 00480258 		.word	1476544512
- 894              		.cfi_endproc
- 895              	.LFE145:
- 897              		.section	.text.main,"ax",%progbits
- 898              		.align	1
- 899              		.global	main
- 900              		.syntax unified
- 901              		.thumb
- 902              		.thumb_func
- 904              	main:
- 905              	.LFB144:
+ 886 00b6 FFF7FEFF 		bl	Error_Handler
+ 887              	.LVL32:
+ 888              	.L48:
+ 889 00ba 00BF     		.align	2
+ 890              	.L47:
+ 891 00bc 00040058 		.word	1476396032
+ 892 00c0 00480258 		.word	1476544512
+ 893              		.cfi_endproc
+ 894              	.LFE145:
+ 896              		.section	.text.main,"ax",%progbits
+ 897              		.align	1
+ 898              		.global	main
+ 899              		.syntax unified
+ 900              		.thumb
+ 901              		.thumb_func
+ 903              	main:
+ 904              	.LFB144:
  100:Core/Src/main.c **** 
- 906              		.loc 1 100 1 view -0
- 907              		.cfi_startproc
- 908              		@ Volatile: function does not return.
- 909              		@ args = 0, pretend = 0, frame = 0
- 910              		@ frame_needed = 0, uses_anonymous_args = 0
- 911 0000 08B5     		push	{r3, lr}
- 912              		.cfi_def_cfa_offset 8
- 913              		.cfi_offset 3, -8
- 914              		.cfi_offset 14, -4
+ 905              		.loc 1 100 1 view -0
+ 906              		.cfi_startproc
+ 907              		@ Volatile: function does not return.
+ 908              		@ args = 0, pretend = 0, frame = 0
+ 909              		@ frame_needed = 0, uses_anonymous_args = 0
+ 910 0000 08B5     		push	{r3, lr}
+ 911              		.cfi_def_cfa_offset 8
+ 912              		.cfi_offset 3, -8
+ 913              		.cfi_offset 14, -4
  107:Core/Src/main.c **** 
- 915              		.loc 1 107 3 view .LVU297
- 916 0002 FFF7FEFF 		bl	MPU_Config
- 917              	.LVL33:
+ 914              		.loc 1 107 3 view .LVU297
+ 915 0002 FFF7FEFF 		bl	MPU_Config
+ 916              	.LVL33:
  112:Core/Src/main.c **** 
- 918              		.loc 1 112 3 view .LVU298
- 919 0006 FFF7FEFF 		bl	HAL_Init
- 920              	.LVL34:
+ 917              		.loc 1 112 3 view .LVU298
+ 918 0006 FFF7FEFF 		bl	HAL_Init
+ 919              	.LVL34:
  119:Core/Src/main.c **** 
- 921              		.loc 1 119 3 view .LVU299
- 922 000a FFF7FEFF 		bl	SystemClock_Config
- 923              	.LVL35:
+ 920              		.loc 1 119 3 view .LVU299
+ 921 000a FFF7FEFF 		bl	SystemClock_Config
+ 922              	.LVL35:
  126:Core/Src/main.c ****   MX_LTDC_Init();
- 924              		.loc 1 126 3 view .LVU300
- 925 000e FFF7FEFF 		bl	MX_GPIO_Init
- 926              	.LVL36:
+ 923              		.loc 1 126 3 view .LVU300
+ 924 000e FFF7FEFF 		bl	MX_GPIO_Init
+ 925              	.LVL36:
  127:Core/Src/main.c ****   /* USER CODE BEGIN 2 */
- 927              		.loc 1 127 3 view .LVU301
- 928 0012 FFF7FEFF 		bl	MX_LTDC_Init
- 929              	.LVL37:
+ 926              		.loc 1 127 3 view .LVU301
+ 927 0012 FFF7FEFF 		bl	MX_LTDC_Init
+ 928              	.LVL37:
  130:Core/Src/main.c **** 
- 930              		.loc 1 130 5 view .LVU302
- 931 0016 0D4D     		ldr	r5, .L52
- 932 0018 2846     		mov	r0, r5
- 933 001a FFF7FEFF 		bl	FillStrip
- 934              	.LVL38:
+ 929              		.loc 1 130 5 view .LVU302
+ 930 0016 0D4D     		ldr	r5, .L52
+ 931 0018 2846     		mov	r0, r5
+ 932 001a FFF7FEFF 		bl	FillStrip
+ 933              	.LVL38:
  133:Core/Src/main.c ****     active_buffer = 0;
- 935              		.loc 1 133 5 view .LVU303
- 936 001e 0C4C     		ldr	r4, .L52+4
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 32
+ 934              		.loc 1 133 5 view .LVU303
+ 935 001e 0C4C     		ldr	r4, .L52+4
+ 936 0020 0022     		movs	r2, #0
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 32
 
 
- 937 0020 0022     		movs	r2, #0
- 938 0022 2946     		mov	r1, r5
- 939 0024 2046     		mov	r0, r4
- 940 0026 FFF7FEFF 		bl	HAL_LTDC_SetAddress
- 941              	.LVL39:
+ 937 0022 2946     		mov	r1, r5
+ 938 0024 2046     		mov	r0, r4
+ 939 0026 FFF7FEFF 		bl	HAL_LTDC_SetAddress
+ 940              	.LVL39:
  134:Core/Src/main.c **** 
- 942              		.loc 1 134 5 view .LVU304
+ 941              		.loc 1 134 5 view .LVU304
  134:Core/Src/main.c **** 
- 943              		.loc 1 134 19 is_stmt 0 view .LVU305
- 944 002a 0A4B     		ldr	r3, .L52+8
- 945 002c 0022     		movs	r2, #0
- 946 002e 1A70     		strb	r2, [r3]
+ 942              		.loc 1 134 19 is_stmt 0 view .LVU305
+ 943 002a 0A4B     		ldr	r3, .L52+8
+ 944 002c 0022     		movs	r2, #0
+ 945 002e 1A70     		strb	r2, [r3]
  137:Core/Src/main.c **** 
- 947              		.loc 1 137 5 is_stmt 1 view .LVU306
- 948 0030 C821     		movs	r1, #200
- 949 0032 2046     		mov	r0, r4
- 950 0034 FFF7FEFF 		bl	HAL_LTDC_ProgramLineEvent
- 951              	.LVL40:
+ 946              		.loc 1 137 5 is_stmt 1 view .LVU306
+ 947 0030 C821     		movs	r1, #200
+ 948 0032 2046     		mov	r0, r4
+ 949 0034 FFF7FEFF 		bl	HAL_LTDC_ProgramLineEvent
+ 950              	.LVL40:
  140:Core/Src/main.c **** 
- 952              		.loc 1 140 5 view .LVU307
- 953 0038 5820     		movs	r0, #88
- 954 003a FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
- 955              	.LVL41:
+ 951              		.loc 1 140 5 view .LVU307
+ 952 0038 5820     		movs	r0, #88
+ 953 003a FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 954              	.LVL41:
  143:Core/Src/main.c **** 
- 956              		.loc 1 143 5 view .LVU308
- 957 003e 0121     		movs	r1, #1
- 958 0040 2046     		mov	r0, r4
- 959 0042 FFF7FEFF 		bl	HAL_LTDC_Reload
- 960              	.LVL42:
- 961              	.L50:
+ 955              		.loc 1 143 5 view .LVU308
+ 956 003e 0121     		movs	r1, #1
+ 957 0040 2046     		mov	r0, r4
+ 958 0042 FFF7FEFF 		bl	HAL_LTDC_Reload
+ 959              	.LVL42:
+ 960              	.L50:
  149:Core/Src/main.c ****   {
- 962              		.loc 1 149 3 view .LVU309
+ 961              		.loc 1 149 3 view .LVU309
  152:Core/Src/main.c ****     /* USER CODE BEGIN 3 */
- 963              		.loc 1 152 5 discriminator 1 view .LVU310
- 964              		.syntax unified
- 965              	@ 152 "Core/Src/main.c" 1
- 966 0046 30BF     		wfi
- 967              	@ 0 "" 2
+ 962              		.loc 1 152 5 discriminator 1 view .LVU310
+ 963              		.syntax unified
+ 964              	@ 152 "Core/Src/main.c" 1
+ 965 0046 30BF     		wfi
+ 966              	@ 0 "" 2
  149:Core/Src/main.c ****   {
- 968              		.loc 1 149 9 view .LVU311
- 969              		.thumb
- 970              		.syntax unified
- 971 0048 FDE7     		b	.L50
- 972              	.L53:
- 973 004a 00BF     		.align	2
- 974              	.L52:
- 975 004c 00E80300 		.word	buffer0
- 976 0050 00000000 		.word	hltdc
- 977 0054 00000000 		.word	active_buffer
- 978              		.cfi_endproc
- 979              	.LFE144:
- 981              		.global	active_buffer
- 982              		.section	.bss.active_buffer,"aw",%nobits
- 985              	active_buffer:
- 986 0000 00       		.space	1
- 987              		.global	need_fill
- 988              		.section	.bss.need_fill,"aw",%nobits
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 33
+ 967              		.loc 1 149 9 view .LVU311
+ 968              		.thumb
+ 969              		.syntax unified
+ 970 0048 FDE7     		b	.L50
+ 971              	.L53:
+ 972 004a 00BF     		.align	2
+ 973              	.L52:
+ 974 004c 00E80300 		.word	buffer0
+ 975 0050 00000000 		.word	hltdc
+ 976 0054 00000000 		.word	active_buffer
+ 977              		.cfi_endproc
+ 978              	.LFE144:
+ 980              		.global	active_buffer
+ 981              		.section	.bss.active_buffer,"aw",%nobits
+ 984              	active_buffer:
+ 985 0000 00       		.space	1
+ 986              		.global	need_fill
+ 987              		.section	.bss.need_fill,"aw",%nobits
+ 990              	need_fill:
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 33
 
 
- 991              	need_fill:
- 992 0000 00       		.space	1
- 993              		.global	current_strip
- 994              		.section	.bss.current_strip,"aw",%nobits
- 995              		.align	2
- 998              	current_strip:
- 999 0000 00000000 		.space	4
- 1000              		.section	.video_buffers,"aw"
- 1001              		.align	5
- 1004              	buffer1:
- 1005 0000 00000000 		.space	256000
- 1005      00000000 
- 1005      00000000 
- 1005      00000000 
- 1005      00000000 
- 1006              		.align	5
- 1009              	buffer0:
- 1010 3e800 00000000 		.space	256000
- 1010      00000000 
- 1010      00000000 
- 1010      00000000 
- 1010      00000000 
- 1011              		.global	clut
- 1012              		.section	.bss.clut,"aw",%nobits
- 1013              		.align	2
- 1016              	clut:
- 1017 0000 00000000 		.space	1024
- 1017      00000000 
- 1017      00000000 
- 1017      00000000 
- 1017      00000000 
- 1018              		.global	hltdc
- 1019              		.section	.bss.hltdc,"aw",%nobits
- 1020              		.align	2
- 1023              	hltdc:
- 1024 0000 00000000 		.space	168
- 1024      00000000 
- 1024      00000000 
- 1024      00000000 
- 1024      00000000 
- 1025              		.text
- 1026              	.Letext0:
- 1027              		.file 3 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h"
- 1028              		.file 4 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@xp
- 1029              		.file 5 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@xp
- 1030              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
- 1031              		.file 7 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h"
- 1032              		.file 8 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
- 1033              		.file 9 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ltdc.h"
- 1034              		.file 10 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h"
- 1035              		.file 11 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
- 1036              		.file 12 "<built-in>"
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s 			page 34
+ 991 0000 00       		.space	1
+ 992              		.global	current_strip
+ 993              		.section	.bss.current_strip,"aw",%nobits
+ 994              		.align	2
+ 997              	current_strip:
+ 998 0000 00000000 		.space	4
+ 999              		.section	.video_buffers,"aw"
+ 1000              		.align	5
+ 1003              	buffer1:
+ 1004 0000 00000000 		.space	256000
+ 1004      00000000 
+ 1004      00000000 
+ 1004      00000000 
+ 1004      00000000 
+ 1005              		.align	5
+ 1008              	buffer0:
+ 1009 3e800 00000000 		.space	256000
+ 1009      00000000 
+ 1009      00000000 
+ 1009      00000000 
+ 1009      00000000 
+ 1010              		.global	clut
+ 1011              		.section	.bss.clut,"aw",%nobits
+ 1012              		.align	2
+ 1015              	clut:
+ 1016 0000 00000000 		.space	1024
+ 1016      00000000 
+ 1016      00000000 
+ 1016      00000000 
+ 1016      00000000 
+ 1017              		.global	hltdc
+ 1018              		.section	.bss.hltdc,"aw",%nobits
+ 1019              		.align	2
+ 1022              	hltdc:
+ 1023 0000 00000000 		.space	168
+ 1023      00000000 
+ 1023      00000000 
+ 1023      00000000 
+ 1023      00000000 
+ 1024              		.text
+ 1025              	.Letext0:
+ 1026              		.file 3 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h"
+ 1027              		.file 4 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@xp
+ 1028              		.file 5 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@xp
+ 1029              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 1030              		.file 7 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h"
+ 1031              		.file 8 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
+ 1032              		.file 9 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ltdc.h"
+ 1033              		.file 10 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h"
+ 1034              		.file 11 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ 1035              		.file 12 "<built-in>"
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s 			page 34
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:20     .text.MX_GPIO_Init:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:25     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:148    .text.MX_GPIO_Init:000000b0 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:153    .text.MPU_Config:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:158    .text.MPU_Config:00000000 MPU_Config
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:234    .text.FillStrip:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:240    .text.FillStrip:00000000 FillStrip
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:297    .text.LTDC_IRQHandler:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:303    .text.LTDC_IRQHandler:00000000 LTDC_IRQHandler
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:452    .text.LTDC_IRQHandler:000000b4 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:1023   .bss.hltdc:00000000 hltdc
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:998    .bss.current_strip:00000000 current_strip
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:985    .bss.active_buffer:00000000 active_buffer
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:1004   .video_buffers:00000000 buffer1
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:1009   .video_buffers:0003e800 buffer0
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:461    .text.Error_Handler:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:467    .text.Error_Handler:00000000 Error_Handler
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:499    .text.MX_LTDC_Init:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:504    .text.MX_LTDC_Init:00000000 MX_LTDC_Init
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:698    .text.MX_LTDC_Init:000000d0 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:1016   .bss.clut:00000000 clut
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:706    .text.SystemClock_Config:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:712    .text.SystemClock_Config:00000000 SystemClock_Config
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:892    .text.SystemClock_Config:000000bc $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:898    .text.main:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:904    .text.main:00000000 main
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:975    .text.main:0000004c $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:986    .bss.active_buffer:00000000 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:991    .bss.need_fill:00000000 need_fill
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:992    .bss.need_fill:00000000 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:995    .bss.current_strip:00000000 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:1001   .video_buffers:00000000 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:1013   .bss.clut:00000000 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//cchiMB03.s:1020   .bss.hltdc:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:20     .text.MX_GPIO_Init:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:25     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:148    .text.MX_GPIO_Init:000000b0 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:153    .text.MPU_Config:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:158    .text.MPU_Config:00000000 MPU_Config
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:234    .text.FillStrip:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:240    .text.FillStrip:00000000 FillStrip
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:297    .text.LTDC_IRQHandler:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:303    .text.LTDC_IRQHandler:00000000 LTDC_IRQHandler
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:452    .text.LTDC_IRQHandler:000000b4 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:1022   .bss.hltdc:00000000 hltdc
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:997    .bss.current_strip:00000000 current_strip
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:984    .bss.active_buffer:00000000 active_buffer
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:1003   .video_buffers:00000000 buffer1
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:1008   .video_buffers:0003e800 buffer0
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:461    .text.Error_Handler:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:467    .text.Error_Handler:00000000 Error_Handler
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:499    .text.MX_LTDC_Init:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:504    .text.MX_LTDC_Init:00000000 MX_LTDC_Init
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:698    .text.MX_LTDC_Init:000000d0 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:1015   .bss.clut:00000000 clut
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:706    .text.SystemClock_Config:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:712    .text.SystemClock_Config:00000000 SystemClock_Config
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:891    .text.SystemClock_Config:000000bc $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:897    .text.main:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:903    .text.main:00000000 main
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:974    .text.main:0000004c $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:985    .bss.active_buffer:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:990    .bss.need_fill:00000000 need_fill
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:991    .bss.need_fill:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:994    .bss.current_strip:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:1000   .video_buffers:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:1012   .bss.clut:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccVHZXsV.s:1019   .bss.hltdc:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_MPU_Disable

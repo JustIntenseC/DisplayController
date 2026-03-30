@@ -575,7 +575,7 @@ void Error_Handler(void)
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
  8000630:	a809      	add	r0, sp, #36	@ 0x24
  8000632:	f000 fdd3 	bl	80011dc <HAL_RCC_OscConfig>
- 8000636:	b9b8      	cbnz	r0, 8000668 <SystemClock_Config+0xb4>
+ 8000636:	b9b0      	cbnz	r0, 8000666 <SystemClock_Config+0xb2>
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
  8000638:	233f      	movs	r3, #63	@ 0x3f
  800063a:	9301      	str	r3, [sp, #4]
@@ -585,32 +585,32 @@ void Error_Handler(void)
   RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;
  8000640:	2300      	movs	r3, #0
  8000642:	9303      	str	r3, [sp, #12]
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV2;
- 8000644:	2308      	movs	r3, #8
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV4;
+ 8000644:	2309      	movs	r3, #9
  8000646:	9304      	str	r3, [sp, #16]
-  RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV4;
- 8000648:	2350      	movs	r3, #80	@ 0x50
+  RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
+ 8000648:	2340      	movs	r3, #64	@ 0x40
  800064a:	9305      	str	r3, [sp, #20]
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV4;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;
  800064c:	9306      	str	r3, [sp, #24]
   RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
- 800064e:	f44f 6380 	mov.w	r3, #1024	@ 0x400
- 8000652:	9307      	str	r3, [sp, #28]
+ 800064e:	f44f 6280 	mov.w	r2, #1024	@ 0x400
+ 8000652:	9207      	str	r2, [sp, #28]
   RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
- 8000654:	2340      	movs	r3, #64	@ 0x40
- 8000656:	9308      	str	r3, [sp, #32]
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
- 8000658:	2102      	movs	r1, #2
- 800065a:	a801      	add	r0, sp, #4
- 800065c:	f001 fa12 	bl	8001a84 <HAL_RCC_ClockConfig>
- 8000660:	b920      	cbnz	r0, 800066c <SystemClock_Config+0xb8>
+ 8000654:	9308      	str	r3, [sp, #32]
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
+ 8000656:	2101      	movs	r1, #1
+ 8000658:	a801      	add	r0, sp, #4
+ 800065a:	f001 fa13 	bl	8001a84 <HAL_RCC_ClockConfig>
+ 800065e:	b920      	cbnz	r0, 800066a <SystemClock_Config+0xb6>
 }
- 8000662:	b01d      	add	sp, #116	@ 0x74
- 8000664:	f85d fb04 	ldr.w	pc, [sp], #4
+ 8000660:	b01d      	add	sp, #116	@ 0x74
+ 8000662:	f85d fb04 	ldr.w	pc, [sp], #4
     Error_Handler();
- 8000668:	f7ff ff32 	bl	80004d0 <Error_Handler>
+ 8000666:	f7ff ff33 	bl	80004d0 <Error_Handler>
     Error_Handler();
- 800066c:	f7ff ff30 	bl	80004d0 <Error_Handler>
+ 800066a:	f7ff ff31 	bl	80004d0 <Error_Handler>
+ 800066e:	bf00      	nop
  8000670:	58000400 	.word	0x58000400
  8000674:	58024800 	.word	0x58024800
 
@@ -2060,14 +2060,14 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* hltdc)
  8000fae:	9314      	str	r3, [sp, #80]	@ 0x50
     PeriphClkInitStruct.PLL3.PLL3Q = 2;
  8000fb0:	9315      	str	r3, [sp, #84]	@ 0x54
-    PeriphClkInitStruct.PLL3.PLL3R = 80;
- 8000fb2:	2350      	movs	r3, #80	@ 0x50
+    PeriphClkInitStruct.PLL3.PLL3R = 26;
+ 8000fb2:	231a      	movs	r3, #26
  8000fb4:	9316      	str	r3, [sp, #88]	@ 0x58
     PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_3;
  8000fb6:	f44f 6340 	mov.w	r3, #3072	@ 0xc00
  8000fba:	9317      	str	r3, [sp, #92]	@ 0x5c
-    PeriphClkInitStruct.PLL3.PLL3FRACN = 4608.0;
- 8000fbc:	f44f 5390 	mov.w	r3, #4608	@ 0x1200
+    PeriphClkInitStruct.PLL3.PLL3FRACN = 512.0;
+ 8000fbc:	f44f 7300 	mov.w	r3, #512	@ 0x200
  8000fc0:	9319      	str	r3, [sp, #100]	@ 0x64
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
  8000fc2:	a808      	add	r0, sp, #32
