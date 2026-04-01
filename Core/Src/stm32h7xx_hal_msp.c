@@ -94,15 +94,16 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* hltdc)
 
   /** Initializes the peripherals clock
   */
+        /** LTDC Clock = точно 10 МГц */
     PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC;
     PeriphClkInitStruct.PLL3.PLL3M = 1;
-    PeriphClkInitStruct.PLL3.PLL3N = 4;
+    PeriphClkInitStruct.PLL3.PLL3N = 5;      // VCO = 64 MHz * 5 = 320 MHz
     PeriphClkInitStruct.PLL3.PLL3P = 2;
     PeriphClkInitStruct.PLL3.PLL3Q = 2;
-    PeriphClkInitStruct.PLL3.PLL3R = 26;
-    PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_3;
+    PeriphClkInitStruct.PLL3.PLL3R = 32;     // 320 / 32 = 10.000 МГц ТОЧНО
+    PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_2;
     PeriphClkInitStruct.PLL3.PLL3VCOSEL = RCC_PLL3VCOWIDE;
-    PeriphClkInitStruct.PLL3.PLL3FRACN = 512.0;
+    PeriphClkInitStruct.PLL3.PLL3FRACN = 0;
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
     {
       Error_Handler();

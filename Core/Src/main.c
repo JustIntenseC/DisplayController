@@ -35,22 +35,21 @@
 #define  LCD_ACTIVE_HEIGHT 2400
 
 
-#define H_SYNC_WIDTH  50
-#define H_BACK_PORCH  50
-#define H_FRONT_PORCH 50
-
-#define V_SYNC_WIDTH  50
-#define V_BACK_PORCH  50
-#define V_FRONT_PORCH 50
+#define H_SYNC_WIDTH   1000
+#define H_BACK_PORCH   1000
+#define H_FRONT_PORCH  720   // 4000 - (1000+1000+1280) = 720
+#define V_SYNC_WIDTH   30
+#define V_BACK_PORCH   30
+#define V_FRONT_PORCH  40    // 2500 - (30+30+2400) = 40
 
 #define H_TOTAL     (H_SYNC_WIDTH + H_FRONT_PORCH + LCD_ACTIVE_WIDTH + H_BACK_PORCH)
 #define V_TOTAL     (V_SYNC_WIDTH + V_FRONT_PORCH + LCD_ACTIVE_HEIGHT + V_BACK_PORCH)
-#define TOTAL_STRIPS  6
+#define TOTAL_STRIPS  12
 
 #define BYTES_PER_PIXEL 1
 #define STRIP_HEIGHT 200
 #define STRIP_SIZE_BYTES (LCD_ACTIVE_WIDTH * STRIP_HEIGHT)
-#define TOTAL_STRIPS (LCD_ACTIVE_HEIGHT / STRIP_HEIGHT)
+// #define TOTAL_STRIPS (LCD_ACTIVE_HEIGHT / STRIP_HEIGHT)
 #define FRAME_RATE 1 /*Hz*/
 #define ROW_TIME_US (1000000 / (FRAME_RATE * LCD_ACTIVE_HEIGHT))
 
@@ -100,11 +99,14 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+// Отключить MPU, если он был включён до main
+HAL_MPU_Disable();
+__DSB();
+__ISB();
   /* USER CODE END 1 */
 
   /* MPU Configuration--------------------------------------------------------*/
-  MPU_Config();
+  // MPU_Config();
 
   /* MCU Configuration--------------------------------------------------------*/
 
@@ -141,11 +143,13 @@ int main(void)
 
     // 5. Запускаем LTDC
     HAL_LTDC_Reload(&hltdc, LTDC_RELOAD_IMMEDIATE);
+    __HAL_LTDC_ENABLE(&hltdc);
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  uint8_t temp = buffer0[50];
   while (1)
   {
     /* USER CODE END WHILE */
@@ -306,12 +310,12 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void FillStrip(uint8_t *buffer){
-  for(uint32_t row = 0 ; row < STRIP_HEIGHT; row++){
-    for(uint32_t column = 0; column < LCD_ACTIVE_WIDTH; column++){
-      buffer[row*LCD_ACTIVE_WIDTH + column]= 0xFF;
+void FillStrip(uint8_t *buffer) {
+    for (uint32_t row = 0; row < STRIP_HEIGHT; row++) {
+        for (uint32_t column = 0; column < LCD_ACTIVE_WIDTH; column++) {
+            buffer[row*LCD_ACTIVE_WIDTH + column] = 0xFF;
+        }
     }
-  }
 }
 
 void LTDC_IRQHandler(void)
@@ -325,11 +329,14 @@ void LTDC_IRQHandler(void)
         if (current_strip < TOTAL_STRIPS)   // 0..11
         {
             // ---- 1. Переключаем LTDC на другой буфер (уже заполненный) ----
-            if (active_buffer == 0)
+            if (active_buffer == 0){
                 HAL_LTDC_SetAddress(&hltdc, (uint32_t)buffer1, LTDC_LAYER_1);
-            else
+                HAL_LTDC_Reload(&hltdc, LTDC_RELOAD_IMMEDIATE);
+            }
+            else{
                 HAL_LTDC_SetAddress(&hltdc, (uint32_t)buffer0, LTDC_LAYER_1);
-
+                HAL_LTDC_Reload(&hltdc, LTDC_RELOAD_IMMEDIATE);
+              }
             // ---- 2. Инвертируем флаг активного буфера ----
             active_buffer ^= 1;
 
@@ -348,10 +355,14 @@ void LTDC_IRQHandler(void)
             current_strip = 0;
 
             // Переключаем LTDC на другой буфер (для первой полосы нового кадра)
-            if (active_buffer == 0)
+            if (active_buffer == 0){
                 HAL_LTDC_SetAddress(&hltdc, (uint32_t)buffer1, LTDC_LAYER_1);
-            else
+                HAL_LTDC_Reload(&hltdc, LTDC_RELOAD_IMMEDIATE);
+            }
+            else{
                 HAL_LTDC_SetAddress(&hltdc, (uint32_t)buffer0, LTDC_LAYER_1);
+                HAL_LTDC_Reload(&hltdc, LTDC_RELOAD_IMMEDIATE);
+            }
             active_buffer ^= 1;
 
             // Программируем прерывание на конец первой полосы нового кадра
