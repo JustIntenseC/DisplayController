@@ -189,11 +189,15 @@ SECTIONS
   } >DTCMRAM
 
     /* Видеобуферы в RAM (512 КБ) */
+    /* Video buffer — AXI SRAM (самое лучшее место для LTDC) */
   .video_buffers (NOLOAD) :
   {
     . = ALIGN(32);
+    __video_buffer_start__ = .;
     *(.video_buffers)
     *(.video_buffers*)
+    . = ALIGN(32);
+    __video_buffer_end__ = .;
   } > RAM
 
   /* User_heap_stack section, used to check that there is enough RAM left */
