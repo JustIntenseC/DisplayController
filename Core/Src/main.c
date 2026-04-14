@@ -8,49 +8,25 @@
 /* USER CODE END Header */
 
 #include "main.h"
-#include <string.h>
 
+#include <ltdc_drive.h>
 /* USER CODE BEGIN PD */
-
-// Разрешение
-/* USER CODE BEGIN PD */
-// 720x480 @ 60Hz (480p) — стандарт CEA-861
-#define LCD_ACTIVE_WIDTH     720
-#define LCD_ACTIVE_HEIGHT    480
-
-#define H_SYNC_WIDTH         62
-#define H_FRONT_PORCH        16
-#define H_BACK_PORCH         60
-
-#define V_SYNC_WIDTH         6
-#define V_FRONT_PORCH        9
-#define V_BACK_PORCH         30
-
-#define H_TOTAL              858
-#define V_TOTAL              525
-
-#define FRAME_BUFFER_SIZE    (LCD_ACTIVE_WIDTH * LCD_ACTIVE_HEIGHT)  // L8 ≈ 345 КБ
-/* USER CODE END PD */
-
-static uint8_t frame_buffer[FRAME_BUFFER_SIZE] 
-    __attribute__((section(".video_buffers"), aligned(32)));
 
 /* USER CODE END PD */
 
 /* Private variables ---------------------------------------------------------*/
-LTDC_HandleTypeDef hltdc;
 
 /* USER CODE BEGIN PV */
-
+volatile bool flag_ltdc_irq = 0;
+static uint8_t frame_buff[FRAME_BUFFER_SIZE] __attribute__((section(".video_buffers"), aligned(32)));
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MPU_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_LTDC_Init(void);
-void FillFrameBuffer(void);
-void LoadCLUT(void);
+
+
 
 /* USER CODE BEGIN 0 */
 
@@ -58,42 +34,34 @@ void LoadCLUT(void);
 
 int main(void)
 {
-  HAL_MPU_Disable();
-  __DSB();
-  __ISB();
-
   // MPU_Config();
   HAL_Init();
   SystemClock_Config();
 
   MX_GPIO_Init();
-  MX_LTDC_Init();
+
 
   /* USER CODE BEGIN 2 */
-  // Загружаем CLUT (256 градаций серого)
-  LoadCLUT();
+  LTDC_Block_t MainLTDC = {0};
 
-  // Заполняем буфер тестовым градиентом (серый)
-  FillFrameBuffer();
-
-  // Устанавливаем адрес буфера для слоя
-  if(HAL_LTDC_SetAddress(&hltdc, (uint32_t)frame_buffer, LTDC_LAYER_1)!=HAL_OK){
-    Error_Handler();
-  };
-
-  if(HAL_LTDC_Reload(&hltdc, LTDC_RELOAD_IMMEDIATE)!=HAL_OK){
-    Error_Handler();
-  };
-
-  // Включаем LTDC
-  __HAL_LTDC_ENABLE(&hltdc);
-  /* USER CODE END 2 */
+  MainLTDC.frame_buffer = frame_buff;
+  MainLTDC.count = 0;
+  MainLTDC.state = FSM_IDLE;
+  LTDC_Init(&MainLTDC.hltdc,&MainLTDC.pLayerCfg,MainLTDC.frame_buffer);
+/* USER CODE END 2 */ 
 
   while (1)
   {
+    /* USER CODE BEGIN WHILE*/
+    // if(flag_ltdc_irq){
+    //   LTDC_IRQHandler(&MainLTDC);
+    // }
+    LTDC_FSM_Handle(&MainLTDC);
     /* USER CODE END WHILE */
-    /* USER CODE BEGIN 3 */
+
   }
+
+  return 0;
 }
 
 /**
@@ -116,7 +84,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 4;
-  RCC_OscInitStruct.PLL.PLLN = 10;
+  RCC_OscInitStruct.PLL.PLLN = 20;
   RCC_OscInitStruct.PLL.PLLP = 2;
   RCC_OscInitStruct.PLL.PLLQ = 2;
   RCC_OscInitStruct.PLL.PLLR = 2;
@@ -139,13 +107,12 @@ void SystemClock_Config(void)
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
     Error_Handler();
 
-  // === LTDC CLOCK = 27.000 MHz ===
   PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC;
   PeriphClkInitStruct.PLL3.PLL3M = 8;
-  PeriphClkInitStruct.PLL3.PLL3N = 27;
+  PeriphClkInitStruct.PLL3.PLL3N = LTDC_PCLK_VALUE;
   PeriphClkInitStruct.PLL3.PLL3P = 2;
   PeriphClkInitStruct.PLL3.PLL3Q = 2;
-  PeriphClkInitStruct.PLL3.PLL3R = 8;           // 216 / 8 = 27 MHz
+  PeriphClkInitStruct.PLL3.PLL3R = 8;     
   PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_3;
   PeriphClkInitStruct.PLL3.PLL3VCOSEL = RCC_PLL3VCOWIDE;
   PeriphClkInitStruct.PLL3.PLL3FRACN = 0;
@@ -157,48 +124,7 @@ void SystemClock_Config(void)
 /**
   * @brief LTDC Initialization (L8 with CLUT)
   */
-static void MX_LTDC_Init(void)
-{
-  LTDC_LayerCfgTypeDef pLayerCfg = {0};
 
-  hltdc.Instance = LTDC;
-
-  hltdc.Init.HSPolarity = LTDC_HSPOLARITY_AL;
-  hltdc.Init.VSPolarity = LTDC_VSPOLARITY_AL;
-  hltdc.Init.DEPolarity  = LTDC_DEPOLARITY_AL;
-  hltdc.Init.PCPolarity  = LTDC_PCPOLARITY_IPC;     // ← правильная константа
-
-  hltdc.Init.HorizontalSync     = H_SYNC_WIDTH - 1;
-  hltdc.Init.VerticalSync       = V_SYNC_WIDTH - 1;
-  hltdc.Init.AccumulatedHBP     = H_SYNC_WIDTH + H_BACK_PORCH - 1;
-  hltdc.Init.AccumulatedVBP     = V_SYNC_WIDTH + V_BACK_PORCH - 1;
-  hltdc.Init.AccumulatedActiveW = H_SYNC_WIDTH + H_BACK_PORCH + LCD_ACTIVE_WIDTH - 1;
-  hltdc.Init.AccumulatedActiveH = V_SYNC_WIDTH + V_BACK_PORCH + LCD_ACTIVE_HEIGHT - 1;
-  hltdc.Init.TotalWidth         = H_TOTAL - 1;
-  hltdc.Init.TotalHeigh         = V_TOTAL - 1;
-
-  hltdc.Init.Backcolor.Blue  = 0;
-  hltdc.Init.Backcolor.Green = 0;
-  hltdc.Init.Backcolor.Red   = 0;
-
-  if (HAL_LTDC_Init(&hltdc) != HAL_OK) Error_Handler();
-
-  pLayerCfg.WindowX0 = 0;
-  pLayerCfg.WindowX1 = LCD_ACTIVE_WIDTH;
-  pLayerCfg.WindowY0 = 0;
-  pLayerCfg.WindowY1 = LCD_ACTIVE_HEIGHT;
-  pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_L8;
-  pLayerCfg.Alpha = 255;
-  pLayerCfg.Alpha0 = 0;
-  pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
-  pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
-  pLayerCfg.FBStartAdress = (uint32_t)frame_buffer;
-  pLayerCfg.ImageWidth = LCD_ACTIVE_WIDTH;
-  pLayerCfg.ImageHeight = LCD_ACTIVE_HEIGHT;
-
-  if (HAL_LTDC_ConfigLayer(&hltdc, &pLayerCfg, LTDC_LAYER_1) != HAL_OK)
-    Error_Handler();
-}
 
 /**
   * @brief GPIO Initialization
@@ -215,32 +141,51 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+uint8_t flag =1;
+void LTDC_FSM_Handle(LTDC_Block_t *MainLTDC){
 
-/**
-  * @brief  Загрузить CLUT (Color Look-Up Table) для L8
-  * @note   Запись 0 → чёрный, 255 → белый
-  */
-void LoadCLUT(void)
-{
-  uint32_t clut[256];
+    switch (MainLTDC->state)
+    {
+        
+    case FSM_IDLE:
+    // if ... 
+    MainLTDC->state = FSM_START_FRAME;
+    break;
 
-  for (int i = 0; i < 256; i++) {
-    uint8_t gray = i;                     // градация серого
-    clut[i] = (gray << 16) | (gray << 8) | gray; // RGB
-  }
+    case FSM_START_FRAME:
+      // if(flag) {
+      //   FillFrameBuffer(0x55, MainLTDC->frame_buffer); 
+      //   flag =0;
+      // }
+      // else {
+        FillFrameBuffer(0xff, MainLTDC->frame_buffer);
+        // flag=1;
+      // }
+       MainLTDC->state = FSM_RUNNING;
+    break;
 
-  if (HAL_LTDC_ConfigCLUT(&hltdc, clut, 256, LTDC_LAYER_1) != HAL_OK) {
-    Error_Handler();
-  }
+    case FSM_RUNNING:
+      if(MainLTDC->count ==1){
+        MainLTDC->count = 0;
+        MainLTDC->state = FSM_END_FRAME;
+      }
+    break;
+
+    case FSM_END_FRAME:
+      MainLTDC->state = FSM_STOP_FRAME;
+    break;
+
+    case FSM_STOP_FRAME:
+    MainLTDC->state = FSM_IDLE;
+
+    //
+    break;
+
+    default:
+        break;
+    }
 }
 
-/**
-  * @brief  Заполнение буфера тестовым градиентом (8‑бит L8)
-  */
-void FillFrameBuffer(void)
-{
-  memset(frame_buffer, 0xff, FRAME_BUFFER_SIZE);
-}
 /* USER CODE END 4 */
 
 /* MPU Configuration */

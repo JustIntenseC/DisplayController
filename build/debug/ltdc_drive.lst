@@ -1,0 +1,519 @@
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 1
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"ltdc_drive.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.file 1 "Core/Src/ltdc_drive.c"
+  19              		.section	.text.LTDC_Init,"ax",%progbits
+  20              		.align	1
+  21              		.global	LTDC_Init
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	LTDC_Init:
+  27              	.LVL0:
+  28              	.LFB144:
+   1:Core/Src/ltdc_drive.c **** #include "ltdc_drive.h"
+   2:Core/Src/ltdc_drive.c **** 
+   3:Core/Src/ltdc_drive.c **** 
+   4:Core/Src/ltdc_drive.c **** 
+   5:Core/Src/ltdc_drive.c **** void LTDC_Init(LTDC_HandleTypeDef *hltdc, LTDC_LayerCfgTypeDef *pLayerCfg, uint8_t* frame_buffer)
+   6:Core/Src/ltdc_drive.c **** {
+  29              		.loc 1 6 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		.loc 1 6 1 is_stmt 0 view .LVU1
+  34 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  35              		.cfi_def_cfa_offset 24
+  36              		.cfi_offset 3, -24
+  37              		.cfi_offset 4, -20
+  38              		.cfi_offset 5, -16
+  39              		.cfi_offset 6, -12
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 0446     		mov	r4, r0
+  43 0004 0D46     		mov	r5, r1
+  44 0006 1646     		mov	r6, r2
+   7:Core/Src/ltdc_drive.c **** 
+   8:Core/Src/ltdc_drive.c ****   hltdc->Instance = LTDC;
+  45              		.loc 1 8 3 is_stmt 1 view .LVU2
+  46              		.loc 1 8 19 is_stmt 0 view .LVU3
+  47 0008 2C4B     		ldr	r3, .L7
+  48 000a 0360     		str	r3, [r0]
+   9:Core/Src/ltdc_drive.c **** 
+  10:Core/Src/ltdc_drive.c ****   hltdc->Init.HSPolarity = LTDC_HSPOLARITY_AL;
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s 			page 2
+
+
+  49              		.loc 1 10 3 is_stmt 1 view .LVU4
+  50              		.loc 1 10 26 is_stmt 0 view .LVU5
+  51 000c 0023     		movs	r3, #0
+  52 000e 4360     		str	r3, [r0, #4]
+  11:Core/Src/ltdc_drive.c ****   hltdc->Init.VSPolarity = LTDC_VSPOLARITY_AL;
+  53              		.loc 1 11 3 is_stmt 1 view .LVU6
+  54              		.loc 1 11 26 is_stmt 0 view .LVU7
+  55 0010 8360     		str	r3, [r0, #8]
+  12:Core/Src/ltdc_drive.c ****   hltdc->Init.DEPolarity  = LTDC_DEPOLARITY_AL;
+  56              		.loc 1 12 3 is_stmt 1 view .LVU8
+  57              		.loc 1 12 27 is_stmt 0 view .LVU9
+  58 0012 C360     		str	r3, [r0, #12]
+  13:Core/Src/ltdc_drive.c ****   hltdc->Init.PCPolarity  = LTDC_PCPOLARITY_IPC;     
+  59              		.loc 1 13 3 is_stmt 1 view .LVU10
+  60              		.loc 1 13 27 is_stmt 0 view .LVU11
+  61 0014 0361     		str	r3, [r0, #16]
+  14:Core/Src/ltdc_drive.c **** 
+  15:Core/Src/ltdc_drive.c ****   hltdc->Init.HorizontalSync     = H_SYNC_WIDTH - 1;
+  62              		.loc 1 15 3 is_stmt 1 view .LVU12
+  63              		.loc 1 15 34 is_stmt 0 view .LVU13
+  64 0016 5F22     		movs	r2, #95
+  65              	.LVL1:
+  66              		.loc 1 15 34 view .LVU14
+  67 0018 4261     		str	r2, [r0, #20]
+  16:Core/Src/ltdc_drive.c ****   hltdc->Init.VerticalSync       = V_SYNC_WIDTH - 1;
+  68              		.loc 1 16 3 is_stmt 1 view .LVU15
+  69              		.loc 1 16 34 is_stmt 0 view .LVU16
+  70 001a 0122     		movs	r2, #1
+  71 001c 8261     		str	r2, [r0, #24]
+  17:Core/Src/ltdc_drive.c ****   hltdc->Init.AccumulatedHBP     = H_SYNC_WIDTH + H_BACK_PORCH - 1;
+  72              		.loc 1 17 3 is_stmt 1 view .LVU17
+  73              		.loc 1 17 34 is_stmt 0 view .LVU18
+  74 001e 8F22     		movs	r2, #143
+  75 0020 C261     		str	r2, [r0, #28]
+  18:Core/Src/ltdc_drive.c ****   hltdc->Init.AccumulatedVBP     = V_SYNC_WIDTH + V_BACK_PORCH - 1;
+  76              		.loc 1 18 3 is_stmt 1 view .LVU19
+  77              		.loc 1 18 34 is_stmt 0 view .LVU20
+  78 0022 2222     		movs	r2, #34
+  79 0024 0262     		str	r2, [r0, #32]
+  19:Core/Src/ltdc_drive.c ****   hltdc->Init.AccumulatedActiveW = H_SYNC_WIDTH + H_BACK_PORCH + LCD_ACTIVE_WIDTH - 1;
+  80              		.loc 1 19 3 is_stmt 1 view .LVU21
+  81              		.loc 1 19 34 is_stmt 0 view .LVU22
+  82 0026 40F20F32 		movw	r2, #783
+  83 002a 4262     		str	r2, [r0, #36]
+  20:Core/Src/ltdc_drive.c ****   hltdc->Init.AccumulatedActiveH = V_SYNC_WIDTH + V_BACK_PORCH + LCD_ACTIVE_HEIGHT - 1;
+  84              		.loc 1 20 3 is_stmt 1 view .LVU23
+  85              		.loc 1 20 34 is_stmt 0 view .LVU24
+  86 002c 40F20222 		movw	r2, #514
+  87 0030 8262     		str	r2, [r0, #40]
+  21:Core/Src/ltdc_drive.c ****   hltdc->Init.TotalWidth         = H_TOTAL - 1;
+  88              		.loc 1 21 3 is_stmt 1 view .LVU25
+  89              		.loc 1 21 34 is_stmt 0 view .LVU26
+  90 0032 40F21F32 		movw	r2, #799
+  91 0036 C262     		str	r2, [r0, #44]
+  22:Core/Src/ltdc_drive.c ****   hltdc->Init.TotalHeigh         = V_TOTAL - 1;
+  92              		.loc 1 22 3 is_stmt 1 view .LVU27
+  93              		.loc 1 22 34 is_stmt 0 view .LVU28
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s 			page 3
+
+
+  94 0038 4FF40372 		mov	r2, #524
+  95 003c 0263     		str	r2, [r0, #48]
+  23:Core/Src/ltdc_drive.c **** 
+  24:Core/Src/ltdc_drive.c ****   hltdc->Init.Backcolor.Blue  = 0;
+  96              		.loc 1 24 3 is_stmt 1 view .LVU29
+  97              		.loc 1 24 31 is_stmt 0 view .LVU30
+  98 003e 80F83430 		strb	r3, [r0, #52]
+  25:Core/Src/ltdc_drive.c ****   hltdc->Init.Backcolor.Green = 0;
+  99              		.loc 1 25 3 is_stmt 1 view .LVU31
+ 100              		.loc 1 25 31 is_stmt 0 view .LVU32
+ 101 0042 80F83530 		strb	r3, [r0, #53]
+  26:Core/Src/ltdc_drive.c ****   hltdc->Init.Backcolor.Red   = 0;
+ 102              		.loc 1 26 3 is_stmt 1 view .LVU33
+ 103              		.loc 1 26 31 is_stmt 0 view .LVU34
+ 104 0046 80F83630 		strb	r3, [r0, #54]
+  27:Core/Src/ltdc_drive.c **** 
+  28:Core/Src/ltdc_drive.c ****   if (HAL_LTDC_Init(hltdc) != HAL_OK) Error_Handler();
+ 105              		.loc 1 28 3 is_stmt 1 view .LVU35
+ 106              		.loc 1 28 7 is_stmt 0 view .LVU36
+ 107 004a FFF7FEFF 		bl	HAL_LTDC_Init
+ 108              	.LVL2:
+ 109              		.loc 1 28 6 discriminator 1 view .LVU37
+ 110 004e 70BB     		cbnz	r0, .L5
+ 111              	.L2:
+  29:Core/Src/ltdc_drive.c **** 
+  30:Core/Src/ltdc_drive.c ****   pLayerCfg->WindowX0 = 0;
+ 112              		.loc 1 30 3 is_stmt 1 view .LVU38
+ 113              		.loc 1 30 23 is_stmt 0 view .LVU39
+ 114 0050 0022     		movs	r2, #0
+ 115 0052 2A60     		str	r2, [r5]
+  31:Core/Src/ltdc_drive.c ****   pLayerCfg->WindowX1 = LCD_ACTIVE_WIDTH;
+ 116              		.loc 1 31 3 is_stmt 1 view .LVU40
+ 117              		.loc 1 31 23 is_stmt 0 view .LVU41
+ 118 0054 4FF42071 		mov	r1, #640
+ 119 0058 6960     		str	r1, [r5, #4]
+  32:Core/Src/ltdc_drive.c ****   pLayerCfg->WindowY0 = 0;
+ 120              		.loc 1 32 3 is_stmt 1 view .LVU42
+ 121              		.loc 1 32 23 is_stmt 0 view .LVU43
+ 122 005a AA60     		str	r2, [r5, #8]
+  33:Core/Src/ltdc_drive.c ****   pLayerCfg->WindowY1 = LCD_ACTIVE_HEIGHT;
+ 123              		.loc 1 33 3 is_stmt 1 view .LVU44
+ 124              		.loc 1 33 23 is_stmt 0 view .LVU45
+ 125 005c 4FF4F073 		mov	r3, #480
+ 126 0060 EB60     		str	r3, [r5, #12]
+  34:Core/Src/ltdc_drive.c ****   pLayerCfg->PixelFormat = LTDC_PIXEL_FORMAT_L8;
+ 127              		.loc 1 34 3 is_stmt 1 view .LVU46
+ 128              		.loc 1 34 26 is_stmt 0 view .LVU47
+ 129 0062 0520     		movs	r0, #5
+ 130 0064 2861     		str	r0, [r5, #16]
+  35:Core/Src/ltdc_drive.c ****   pLayerCfg->Alpha = 255;
+ 131              		.loc 1 35 3 is_stmt 1 view .LVU48
+ 132              		.loc 1 35 20 is_stmt 0 view .LVU49
+ 133 0066 FF27     		movs	r7, #255
+ 134 0068 6F61     		str	r7, [r5, #20]
+  36:Core/Src/ltdc_drive.c ****   pLayerCfg->Alpha0 = 0;
+ 135              		.loc 1 36 3 is_stmt 1 view .LVU50
+ 136              		.loc 1 36 21 is_stmt 0 view .LVU51
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s 			page 4
+
+
+ 137 006a AA61     		str	r2, [r5, #24]
+  37:Core/Src/ltdc_drive.c ****   pLayerCfg->BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
+ 138              		.loc 1 37 3 is_stmt 1 view .LVU52
+ 139              		.loc 1 37 30 is_stmt 0 view .LVU53
+ 140 006c 4FF48067 		mov	r7, #1024
+ 141 0070 EF61     		str	r7, [r5, #28]
+  38:Core/Src/ltdc_drive.c ****   pLayerCfg->BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
+ 142              		.loc 1 38 3 is_stmt 1 view .LVU54
+ 143              		.loc 1 38 30 is_stmt 0 view .LVU55
+ 144 0072 2862     		str	r0, [r5, #32]
+  39:Core/Src/ltdc_drive.c ****   pLayerCfg->FBStartAdress = (uint32_t)frame_buffer;
+ 145              		.loc 1 39 3 is_stmt 1 view .LVU56
+ 146              		.loc 1 39 28 is_stmt 0 view .LVU57
+ 147 0074 6E62     		str	r6, [r5, #36]
+  40:Core/Src/ltdc_drive.c ****   pLayerCfg->ImageWidth = LCD_ACTIVE_WIDTH;
+ 148              		.loc 1 40 3 is_stmt 1 view .LVU58
+ 149              		.loc 1 40 25 is_stmt 0 view .LVU59
+ 150 0076 A962     		str	r1, [r5, #40]
+  41:Core/Src/ltdc_drive.c ****   pLayerCfg->ImageHeight = LCD_ACTIVE_HEIGHT;
+ 151              		.loc 1 41 3 is_stmt 1 view .LVU60
+ 152              		.loc 1 41 26 is_stmt 0 view .LVU61
+ 153 0078 EB62     		str	r3, [r5, #44]
+  42:Core/Src/ltdc_drive.c ****   if (HAL_LTDC_ConfigLayer(hltdc, pLayerCfg, LTDC_LAYER_1) != HAL_OK)
+ 154              		.loc 1 42 3 is_stmt 1 view .LVU62
+ 155              		.loc 1 42 7 is_stmt 0 view .LVU63
+ 156 007a 2946     		mov	r1, r5
+ 157 007c 2046     		mov	r0, r4
+ 158 007e FFF7FEFF 		bl	HAL_LTDC_ConfigLayer
+ 159              	.LVL3:
+ 160              		.loc 1 42 6 discriminator 1 view .LVU64
+ 161 0082 B8B9     		cbnz	r0, .L6
+ 162              	.L3:
+  43:Core/Src/ltdc_drive.c ****     Error_Handler();
+  44:Core/Src/ltdc_drive.c **** 
+  45:Core/Src/ltdc_drive.c ****     __HAL_LTDC_LAYER_DISABLE(hltdc, LTDC_LAYER_1);
+ 163              		.loc 1 45 5 is_stmt 1 view .LVU65
+ 164 0084 2268     		ldr	r2, [r4]
+ 165 0086 D2F88430 		ldr	r3, [r2, #132]
+ 166 008a 23F00103 		bic	r3, r3, #1
+ 167 008e C2F88430 		str	r3, [r2, #132]
+  46:Core/Src/ltdc_drive.c **** 
+  47:Core/Src/ltdc_drive.c ****     HAL_LTDC_ProgramLineEvent(hltdc, LCD_ACTIVE_HEIGHT - 1);
+ 168              		.loc 1 47 5 view .LVU66
+ 169 0092 40F2DF11 		movw	r1, #479
+ 170 0096 2046     		mov	r0, r4
+ 171 0098 FFF7FEFF 		bl	HAL_LTDC_ProgramLineEvent
+ 172              	.LVL4:
+  48:Core/Src/ltdc_drive.c ****     HAL_NVIC_SetPriority(LTDC_IRQn,0,0);
+ 173              		.loc 1 48 5 view .LVU67
+ 174 009c 0022     		movs	r2, #0
+ 175 009e 1146     		mov	r1, r2
+ 176 00a0 5820     		movs	r0, #88
+ 177 00a2 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 178              	.LVL5:
+  49:Core/Src/ltdc_drive.c ****     HAL_NVIC_EnableIRQ(LTDC_IRQn);
+ 179              		.loc 1 49 5 view .LVU68
+ 180 00a6 5820     		movs	r0, #88
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s 			page 5
+
+
+ 181 00a8 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 182              	.LVL6:
+  50:Core/Src/ltdc_drive.c **** }
+ 183              		.loc 1 50 1 is_stmt 0 view .LVU69
+ 184 00ac F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 185              	.LVL7:
+ 186              	.L5:
+  28:Core/Src/ltdc_drive.c **** 
+ 187              		.loc 1 28 39 is_stmt 1 discriminator 1 view .LVU70
+ 188 00ae FFF7FEFF 		bl	Error_Handler
+ 189              	.LVL8:
+ 190 00b2 CDE7     		b	.L2
+ 191              	.L6:
+  43:Core/Src/ltdc_drive.c **** 
+ 192              		.loc 1 43 5 view .LVU71
+ 193 00b4 FFF7FEFF 		bl	Error_Handler
+ 194              	.LVL9:
+ 195 00b8 E4E7     		b	.L3
+ 196              	.L8:
+ 197 00ba 00BF     		.align	2
+ 198              	.L7:
+ 199 00bc 00100050 		.word	1342181376
+ 200              		.cfi_endproc
+ 201              	.LFE144:
+ 203              		.section	.text.LoadCLUT,"ax",%progbits
+ 204              		.align	1
+ 205              		.global	LoadCLUT
+ 206              		.syntax unified
+ 207              		.thumb
+ 208              		.thumb_func
+ 210              	LoadCLUT:
+ 211              	.LVL10:
+ 212              	.LFB145:
+  51:Core/Src/ltdc_drive.c **** 
+  52:Core/Src/ltdc_drive.c **** void LoadCLUT(LTDC_HandleTypeDef *hltdc)
+  53:Core/Src/ltdc_drive.c **** {
+ 213              		.loc 1 53 1 view -0
+ 214              		.cfi_startproc
+ 215              		@ args = 0, pretend = 0, frame = 1024
+ 216              		@ frame_needed = 0, uses_anonymous_args = 0
+ 217              		.loc 1 53 1 is_stmt 0 view .LVU73
+ 218 0000 10B5     		push	{r4, lr}
+ 219              		.cfi_def_cfa_offset 8
+ 220              		.cfi_offset 4, -8
+ 221              		.cfi_offset 14, -4
+ 222 0002 ADF5806D 		sub	sp, sp, #1024
+ 223              		.cfi_def_cfa_offset 1032
+ 224 0006 0446     		mov	r4, r0
+  54:Core/Src/ltdc_drive.c ****   uint32_t clut[256];
+ 225              		.loc 1 54 3 is_stmt 1 view .LVU74
+  55:Core/Src/ltdc_drive.c **** 
+  56:Core/Src/ltdc_drive.c ****   for (int i = 0; i < 256; i++) {
+ 226              		.loc 1 56 3 view .LVU75
+ 227              	.LBB2:
+ 228              		.loc 1 56 8 view .LVU76
+ 229              	.LVL11:
+ 230              		.loc 1 56 12 is_stmt 0 view .LVU77
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s 			page 6
+
+
+ 231 0008 0022     		movs	r2, #0
+ 232              		.loc 1 56 3 view .LVU78
+ 233 000a 07E0     		b	.L10
+ 234              	.LVL12:
+ 235              	.L11:
+ 236              	.LBB3:
+  57:Core/Src/ltdc_drive.c ****     uint8_t gray = i;                   
+ 237              		.loc 1 57 5 is_stmt 1 view .LVU79
+  58:Core/Src/ltdc_drive.c ****     clut[i] = (gray << 16) | (gray << 8) | gray; 
+ 238              		.loc 1 58 5 view .LVU80
+ 239              		.loc 1 58 28 is_stmt 0 view .LVU81
+ 240 000c D3B2     		uxtb	r3, r2
+ 241 000e 03EB0321 		add	r1, r3, r3, lsl #8
+ 242              		.loc 1 58 42 view .LVU82
+ 243 0012 43EA0123 		orr	r3, r3, r1, lsl #8
+ 244              		.loc 1 58 13 view .LVU83
+ 245 0016 4DF82230 		str	r3, [sp, r2, lsl #2]
+ 246              	.LBE3:
+  56:Core/Src/ltdc_drive.c ****     uint8_t gray = i;                   
+ 247              		.loc 1 56 29 is_stmt 1 discriminator 3 view .LVU84
+ 248 001a 0132     		adds	r2, r2, #1
+ 249              	.LVL13:
+ 250              	.L10:
+  56:Core/Src/ltdc_drive.c ****     uint8_t gray = i;                   
+ 251              		.loc 1 56 21 discriminator 1 view .LVU85
+ 252 001c FF2A     		cmp	r2, #255
+ 253 001e F5DD     		ble	.L11
+ 254              	.LBE2:
+  59:Core/Src/ltdc_drive.c ****   }
+  60:Core/Src/ltdc_drive.c **** 
+  61:Core/Src/ltdc_drive.c ****   if (HAL_LTDC_ConfigCLUT(hltdc, clut, 256, LTDC_LAYER_1) != HAL_OK) {
+ 255              		.loc 1 61 3 view .LVU86
+ 256              		.loc 1 61 7 is_stmt 0 view .LVU87
+ 257 0020 0023     		movs	r3, #0
+ 258 0022 4FF48072 		mov	r2, #256
+ 259              	.LVL14:
+ 260              		.loc 1 61 7 view .LVU88
+ 261 0026 6946     		mov	r1, sp
+ 262 0028 2046     		mov	r0, r4
+ 263              	.LVL15:
+ 264              		.loc 1 61 7 view .LVU89
+ 265 002a FFF7FEFF 		bl	HAL_LTDC_ConfigCLUT
+ 266              	.LVL16:
+ 267              		.loc 1 61 6 discriminator 1 view .LVU90
+ 268 002e 38B9     		cbnz	r0, .L15
+ 269              	.L12:
+  62:Core/Src/ltdc_drive.c ****     Error_Handler();
+  63:Core/Src/ltdc_drive.c ****   }
+  64:Core/Src/ltdc_drive.c ****   if(HAL_LTDC_EnableCLUT(hltdc, LTDC_LAYER_1)!=HAL_OK){
+ 270              		.loc 1 64 3 is_stmt 1 view .LVU91
+ 271              		.loc 1 64 6 is_stmt 0 view .LVU92
+ 272 0030 0021     		movs	r1, #0
+ 273 0032 2046     		mov	r0, r4
+ 274 0034 FFF7FEFF 		bl	HAL_LTDC_EnableCLUT
+ 275              	.LVL17:
+ 276              		.loc 1 64 5 discriminator 1 view .LVU93
+ 277 0038 28B9     		cbnz	r0, .L16
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s 			page 7
+
+
+ 278              	.L9:
+  65:Core/Src/ltdc_drive.c ****     Error_Handler();
+  66:Core/Src/ltdc_drive.c ****   }
+  67:Core/Src/ltdc_drive.c **** }
+ 279              		.loc 1 67 1 view .LVU94
+ 280 003a 0DF5806D 		add	sp, sp, #1024
+ 281              		.cfi_remember_state
+ 282              		.cfi_def_cfa_offset 8
+ 283              		@ sp needed
+ 284 003e 10BD     		pop	{r4, pc}
+ 285              	.LVL18:
+ 286              	.L15:
+ 287              		.cfi_restore_state
+  62:Core/Src/ltdc_drive.c ****     Error_Handler();
+ 288              		.loc 1 62 5 is_stmt 1 view .LVU95
+ 289 0040 FFF7FEFF 		bl	Error_Handler
+ 290              	.LVL19:
+ 291 0044 F4E7     		b	.L12
+ 292              	.L16:
+  65:Core/Src/ltdc_drive.c ****     Error_Handler();
+ 293              		.loc 1 65 5 view .LVU96
+ 294 0046 FFF7FEFF 		bl	Error_Handler
+ 295              	.LVL20:
+ 296              		.loc 1 67 1 is_stmt 0 view .LVU97
+ 297 004a F6E7     		b	.L9
+ 298              		.cfi_endproc
+ 299              	.LFE145:
+ 301              		.section	.text.FillFrameBuffer,"ax",%progbits
+ 302              		.align	1
+ 303              		.global	FillFrameBuffer
+ 304              		.syntax unified
+ 305              		.thumb
+ 306              		.thumb_func
+ 308              	FillFrameBuffer:
+ 309              	.LVL21:
+ 310              	.LFB146:
+  68:Core/Src/ltdc_drive.c **** 
+  69:Core/Src/ltdc_drive.c **** void FillFrameBuffer(uint8_t value, uint8_t* frame_buffer)
+  70:Core/Src/ltdc_drive.c **** {
+ 311              		.loc 1 70 1 is_stmt 1 view -0
+ 312              		.cfi_startproc
+ 313              		@ args = 0, pretend = 0, frame = 0
+ 314              		@ frame_needed = 0, uses_anonymous_args = 0
+ 315              		.loc 1 70 1 is_stmt 0 view .LVU99
+ 316 0000 08B5     		push	{r3, lr}
+ 317              		.cfi_def_cfa_offset 8
+ 318              		.cfi_offset 3, -8
+ 319              		.cfi_offset 14, -4
+ 320 0002 0B46     		mov	r3, r1
+  71:Core/Src/ltdc_drive.c ****   memset(frame_buffer, value, FRAME_BUFFER_SIZE);
+ 321              		.loc 1 71 3 is_stmt 1 view .LVU100
+ 322 0004 4FF49622 		mov	r2, #307200
+ 323 0008 0146     		mov	r1, r0
+ 324              	.LVL22:
+ 325              		.loc 1 71 3 is_stmt 0 view .LVU101
+ 326 000a 1846     		mov	r0, r3
+ 327              	.LVL23:
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s 			page 8
+
+
+ 328              		.loc 1 71 3 view .LVU102
+ 329 000c FFF7FEFF 		bl	memset
+ 330              	.LVL24:
+  72:Core/Src/ltdc_drive.c ****   
+  73:Core/Src/ltdc_drive.c **** }
+ 331              		.loc 1 73 1 view .LVU103
+ 332 0010 08BD     		pop	{r3, pc}
+ 333              		.cfi_endproc
+ 334              	.LFE146:
+ 336              		.section	.text.LTDC_IRQHandler,"ax",%progbits
+ 337              		.align	1
+ 338              		.global	LTDC_IRQHandler
+ 339              		.syntax unified
+ 340              		.thumb
+ 341              		.thumb_func
+ 343              	LTDC_IRQHandler:
+ 344              	.LVL25:
+ 345              	.LFB147:
+  74:Core/Src/ltdc_drive.c **** 
+  75:Core/Src/ltdc_drive.c **** 
+  76:Core/Src/ltdc_drive.c **** 
+  77:Core/Src/ltdc_drive.c **** void LTDC_IRQHandler(LTDC_Block_t *MainLTDC){
+ 346              		.loc 1 77 45 is_stmt 1 view -0
+ 347              		.cfi_startproc
+ 348              		@ args = 0, pretend = 0, frame = 0
+ 349              		@ frame_needed = 0, uses_anonymous_args = 0
+ 350              		@ link register save eliminated.
+  78:Core/Src/ltdc_drive.c **** 
+  79:Core/Src/ltdc_drive.c ****    
+  80:Core/Src/ltdc_drive.c ****     if (__HAL_LTDC_GET_FLAG(&MainLTDC->hltdc, LTDC_FLAG_LI))
+ 351              		.loc 1 80 5 view .LVU105
+ 352              		.loc 1 80 9 is_stmt 0 view .LVU106
+ 353 0000 8368     		ldr	r3, [r0, #8]
+ 354 0002 9A6B     		ldr	r2, [r3, #56]
+ 355              		.loc 1 80 8 view .LVU107
+ 356 0004 12F0010F 		tst	r2, #1
+ 357 0008 03D0     		beq	.L19
+  81:Core/Src/ltdc_drive.c ****     {
+  82:Core/Src/ltdc_drive.c ****         __HAL_LTDC_CLEAR_FLAG(&MainLTDC->hltdc, LTDC_FLAG_LI);
+ 358              		.loc 1 82 9 is_stmt 1 view .LVU108
+ 359 000a 0122     		movs	r2, #1
+ 360 000c DA63     		str	r2, [r3, #60]
+  83:Core/Src/ltdc_drive.c ****         
+  84:Core/Src/ltdc_drive.c ****         MainLTDC->count =1;                   
+ 361              		.loc 1 84 9 view .LVU109
+ 362              		.loc 1 84 25 is_stmt 0 view .LVU110
+ 363 000e C0F8E420 		str	r2, [r0, #228]
+ 364              	.L19:
+  85:Core/Src/ltdc_drive.c ****         
+  86:Core/Src/ltdc_drive.c ****     }
+  87:Core/Src/ltdc_drive.c ****    
+  88:Core/Src/ltdc_drive.c **** 
+  89:Core/Src/ltdc_drive.c **** }
+ 365              		.loc 1 89 1 view .LVU111
+ 366 0012 7047     		bx	lr
+ 367              		.cfi_endproc
+ 368              	.LFE147:
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s 			page 9
+
+
+ 370              		.text
+ 371              	.Letext0:
+ 372              		.file 2 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h"
+ 373              		.file 3 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@xp
+ 374              		.file 4 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@xp
+ 375              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 376              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ltdc.h"
+ 377              		.file 7 "Core/Inc/ltdc_drive.h"
+ 378              		.file 8 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@xp
+ 379              		.file 9 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
+ 380              		.file 10 "Core/Inc/main.h"
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ltdc_drive.c
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s:20     .text.LTDC_Init:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s:26     .text.LTDC_Init:00000000 LTDC_Init
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s:199    .text.LTDC_Init:000000bc $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s:204    .text.LoadCLUT:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s:210    .text.LoadCLUT:00000000 LoadCLUT
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s:302    .text.FillFrameBuffer:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s:308    .text.FillFrameBuffer:00000000 FillFrameBuffer
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s:337    .text.LTDC_IRQHandler:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccEHt5yn.s:343    .text.LTDC_IRQHandler:00000000 LTDC_IRQHandler
+
+UNDEFINED SYMBOLS
+HAL_LTDC_Init
+HAL_LTDC_ConfigLayer
+HAL_LTDC_ProgramLineEvent
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+Error_Handler
+HAL_LTDC_ConfigCLUT
+HAL_LTDC_EnableCLUT
+memset
