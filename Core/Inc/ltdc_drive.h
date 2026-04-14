@@ -2,8 +2,6 @@
 #include "main.h"
 
 
-
-
 #define SD
 
 #ifndef LTDC_DRIVER_H
@@ -70,6 +68,5 @@ typedef struct{
 void LTDC_Init(LTDC_HandleTypeDef *hltdc, LTDC_LayerCfgTypeDef *pLayerCfg, uint8_t* frame_buffer);
 void LoadCLUT(LTDC_HandleTypeDef *hltdc);
 void FillFrameBuffer(uint8_t value, uint8_t *frame_buffer);
-void LTDC_IRQHandler(LTDC_Block_t *MainLTDC);
 void LTDC_FSM_Handle(LTDC_Block_t *MainLTDC);
 #endif

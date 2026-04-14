@@ -42,7 +42,7 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-extern volatile bool flag_ltdc_irq;
+extern volatile bool flag_ltdc_work;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/

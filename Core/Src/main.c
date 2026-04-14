@@ -8,7 +8,7 @@
 /* USER CODE END Header */
 
 #include "main.h"
-
+#include "uart.h"
 #include <ltdc_drive.h>
 /* USER CODE BEGIN PD */
 
@@ -17,8 +17,10 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-volatile bool flag_ltdc_irq = 0;
+volatile bool flag_ltdc_work = 0;
 static uint8_t frame_buff[FRAME_BUFFER_SIZE] __attribute__((section(".video_buffers"), aligned(32)));
+LTDC_Block_t MainLTDC = {0};
+extern volatile uint8_t flag_uart_irq;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -34,15 +36,14 @@ static void MX_GPIO_Init(void);
 
 int main(void)
 {
-  // MPU_Config();
+  MPU_Config();
   HAL_Init();
   SystemClock_Config();
 
   MX_GPIO_Init();
 
-
+  UART_Init();
   /* USER CODE BEGIN 2 */
-  LTDC_Block_t MainLTDC = {0};
 
   MainLTDC.frame_buffer = frame_buff;
   MainLTDC.count = 0;
@@ -53,9 +54,12 @@ int main(void)
   while (1)
   {
     /* USER CODE BEGIN WHILE*/
-    // if(flag_ltdc_irq){
-    //   LTDC_IRQHandler(&MainLTDC);
-    // }
+    
+    if(flag_uart_irq){
+      
+      UART_HandlePacket();
+      flag_uart_irq = 0 ;
+    }
     LTDC_FSM_Handle(&MainLTDC);
     /* USER CODE END WHILE */
 
@@ -148,19 +152,17 @@ void LTDC_FSM_Handle(LTDC_Block_t *MainLTDC){
     {
         
     case FSM_IDLE:
-    // if ... 
-    MainLTDC->state = FSM_START_FRAME;
+      if(flag_ltdc_work){
+        FillFrameBuffer(0x00, MainLTDC->frame_buffer);
+        MainLTDC->state = FSM_START_FRAME;
+      }
+      else
+        FillFrameBuffer(0xFF, frame_buff);
+
+
     break;
 
     case FSM_START_FRAME:
-      // if(flag) {
-      //   FillFrameBuffer(0x55, MainLTDC->frame_buffer); 
-      //   flag =0;
-      // }
-      // else {
-        FillFrameBuffer(0xff, MainLTDC->frame_buffer);
-        // flag=1;
-      // }
        MainLTDC->state = FSM_RUNNING;
     break;
 
