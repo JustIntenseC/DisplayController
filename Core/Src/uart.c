@@ -2,11 +2,11 @@
 
 UART_HandleTypeDef huart1;
 
-volatile uint8_t flag_uart_irq = 0;
+volatile uint8_t uart_command_received = 0;
 uint8_t packet_received = 0;
 uint8_t packet_index = 0;
 char packet_buffer[64] = "";
-extern volatile bool flag_ltdc_work;
+extern volatile bool display_enabled;
 void UART_Init(void)
 {
     GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -52,10 +52,10 @@ void UART_Init(void)
 
 void UART_HandlePacket(void){
     if(!strncmp(packet_buffer, "start", 5)){
-        flag_ltdc_work = 1;
+        display_enabled = 1;
     }
     else if(!strncmp(packet_buffer, "end", 3)){
-        flag_ltdc_work = 0;
+        display_enabled = 0;
     }
 }
 
@@ -68,7 +68,7 @@ void USART1_IRQHandler(void){
         if (byte == '\n') {
             packet_received =1;
             packet_index = 0;
-            flag_uart_irq = 1;
+            uart_command_received = 1;
         }
     } else {
         packet_index = 0;

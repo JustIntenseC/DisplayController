@@ -17,10 +17,10 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-volatile bool flag_ltdc_work = 0;
+volatile bool display_enabled = 0;
 static uint8_t frame_buff[FRAME_BUFFER_SIZE] __attribute__((section(".video_buffers"), aligned(32)));
-LTDC_Block_t MainLTDC = {0};
-extern volatile uint8_t flag_uart_irq;
+LTDC_Block_t lt = {0};
+extern volatile uint8_t uart_command_received;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -45,22 +45,23 @@ int main(void)
   UART_Init();
   /* USER CODE BEGIN 2 */
 
-  MainLTDC.frame_buffer = frame_buff;
-  MainLTDC.count = 0;
-  MainLTDC.state = FSM_IDLE;
-  LTDC_Init(&MainLTDC.hltdc,&MainLTDC.pLayerCfg,MainLTDC.frame_buffer);
+  lt.frame_buffer = frame_buff;
+  lt.frame_status = 0;
+  lt.state = FSM_IDLE;
+  LTDC_Init(&lt.hltdc,&lt.pLayerCfg,lt.frame_buffer);
+  FillFrameBuffer(0xFF, lt.frame_buffer);
 /* USER CODE END 2 */ 
 
   while (1)
   {
     /* USER CODE BEGIN WHILE*/
     
-    if(flag_uart_irq){
+    if(uart_command_received){
       
       UART_HandlePacket();
-      flag_uart_irq = 0 ;
+      uart_command_received = 0 ;
     }
-    LTDC_FSM_Handle(&MainLTDC);
+    LTDC_FSM_Handle(&lt);
     /* USER CODE END WHILE */
 
   }
@@ -145,42 +146,34 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-uint8_t flag =1;
-void LTDC_FSM_Handle(LTDC_Block_t *MainLTDC){
-
-    switch (MainLTDC->state)
+void LTDC_FSM_Handle(LTDC_Block_t *lt){
+    static uint8_t last_display_enabled = 0 ;
+    switch (lt->state)
     {
         
     case FSM_IDLE:
-      if(flag_ltdc_work){
-        FillFrameBuffer(0x00, MainLTDC->frame_buffer);
-        MainLTDC->state = FSM_START_FRAME;
+      if(last_display_enabled != display_enabled){
+        last_display_enabled = display_enabled;
+        uint8_t color = display_enabled ? 0x00 : 0xFF;
+        FillFrameBuffer(color, lt->frame_buffer);
       }
-      else
-        FillFrameBuffer(0xFF, frame_buff);
-
+      else lt->state = FSM_START_FRAME;
 
     break;
 
     case FSM_START_FRAME:
-       MainLTDC->state = FSM_RUNNING;
+       lt->state = FSM_RUNNING;
     break;
 
     case FSM_RUNNING:
-      if(MainLTDC->count ==1){
-        MainLTDC->count = 0;
-        MainLTDC->state = FSM_END_FRAME;
+      if(lt->frame_status){
+        lt->frame_status = FRAME_NOT_READY;
+        lt->state = FSM_END_FRAME;
       }
     break;
 
     case FSM_END_FRAME:
-      MainLTDC->state = FSM_STOP_FRAME;
-    break;
-
-    case FSM_STOP_FRAME:
-    MainLTDC->state = FSM_IDLE;
-
-    //
+      lt->state = FSM_IDLE;
     break;
 
     default:

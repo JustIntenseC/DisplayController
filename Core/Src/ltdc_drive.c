@@ -1,6 +1,6 @@
 #include "ltdc_drive.h"
 
-extern LTDC_Block_t MainLTDC;
+extern LTDC_Block_t lt;
 
 void LTDC_Init(LTDC_HandleTypeDef *hltdc, LTDC_LayerCfgTypeDef *pLayerCfg, uint8_t* frame_buffer)
 {
@@ -42,8 +42,6 @@ void LTDC_Init(LTDC_HandleTypeDef *hltdc, LTDC_LayerCfgTypeDef *pLayerCfg, uint8
   if (HAL_LTDC_ConfigLayer(hltdc, pLayerCfg, LTDC_LAYER_1) != HAL_OK)
     Error_Handler();
 
-  __HAL_LTDC_LAYER_DISABLE(hltdc, LTDC_LAYER_1);
-
   HAL_LTDC_ProgramLineEvent(hltdc, LCD_ACTIVE_HEIGHT - 1);
   HAL_NVIC_SetPriority(LTDC_IRQn,0,0);
   HAL_NVIC_EnableIRQ(LTDC_IRQn);
@@ -77,11 +75,11 @@ void FillFrameBuffer(uint8_t value, uint8_t* frame_buffer)
 void LTDC_IRQHandler(void){
 
    
-    if (__HAL_LTDC_GET_FLAG(&MainLTDC.hltdc, LTDC_FLAG_LI))
+    if (__HAL_LTDC_GET_FLAG(&lt.hltdc, LTDC_FLAG_LI))
     {
-        __HAL_LTDC_CLEAR_FLAG(&MainLTDC.hltdc, LTDC_FLAG_LI);
+        __HAL_LTDC_CLEAR_FLAG(&lt.hltdc, LTDC_FLAG_LI);
         
-        MainLTDC.count =1;                   
+        lt.frame_status = FRAME_READY;                   
         
     }
    

@@ -48,20 +48,21 @@
 typedef enum {
     FSM_IDLE,           // Вывод отключён, LTDC остановлен
     FSM_START_FRAME,    // Подготовка к выводу нового кадра
-    FSM_FILL_STRIP,     // Заполнение первого буфера (полоса 0)
     FSM_RUNNING,        // LTDC активен, передача полос идёт (прерывания)
-    FSM_WAIT_IRQ,       // Ожидание прерывания (неблокирующее, фактически не нужно)
-    FSM_CHANGE_BUFFER,     // Переключение буферов, перезапись следующей полосы
     FSM_END_FRAME,      // Кадр завершён, можно перезапустить или остановиться
-    FSM_STOP_FRAME            // Остановка LTDC по запросу пользователя
 } fsm_state_t;
+
+typedef enum{
+    FRAME_NOT_READY,
+    FRAME_READY
+} frame_state_t;
 
 typedef struct{
     fsm_state_t state;
     uint8_t * frame_buffer;
     LTDC_HandleTypeDef hltdc;
     LTDC_LayerCfgTypeDef pLayerCfg;
-    volatile uint32_t count;
+    volatile uint32_t frame_status;
 } LTDC_Block_t;
 
 
