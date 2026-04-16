@@ -1,7 +1,7 @@
 #include "ltdc_drive.h"
 
 extern LTDC_Block_t lt;
-
+uint32_t clut[256];
 void LTDC_Init(LTDC_HandleTypeDef *hltdc, LTDC_LayerCfgTypeDef *pLayerCfg, uint8_t* frame_buffer)
 {
 
@@ -34,22 +34,25 @@ void LTDC_Init(LTDC_HandleTypeDef *hltdc, LTDC_LayerCfgTypeDef *pLayerCfg, uint8
   pLayerCfg->PixelFormat = LTDC_PIXEL_FORMAT_L8;
   pLayerCfg->Alpha = 255;
   pLayerCfg->Alpha0 = 0;
-  pLayerCfg->BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
-  pLayerCfg->BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
+  pLayerCfg->BlendingFactor1 = LTDC_BLENDING_FACTOR1_PAxCA;
+  pLayerCfg->BlendingFactor2 = LTDC_BLENDING_FACTOR2_PAxCA;
   pLayerCfg->FBStartAdress = (uint32_t)frame_buffer;
   pLayerCfg->ImageWidth = LCD_ACTIVE_WIDTH;
   pLayerCfg->ImageHeight = LCD_ACTIVE_HEIGHT;
   if (HAL_LTDC_ConfigLayer(hltdc, pLayerCfg, LTDC_LAYER_1) != HAL_OK)
     Error_Handler();
 
+  HAL_LTDC_Reload(hltdc, LTDC_RELOAD_IMMEDIATE);
   HAL_LTDC_ProgramLineEvent(hltdc, LCD_ACTIVE_HEIGHT - 1);
   HAL_NVIC_SetPriority(LTDC_IRQn,0,0);
   HAL_NVIC_EnableIRQ(LTDC_IRQn);
+
+
 }
 
 void LoadCLUT(LTDC_HandleTypeDef *hltdc)
 {
-  uint32_t clut[256];
+
 
   for (int i = 0; i < 256; i++) {
     uint8_t gray = i;                   

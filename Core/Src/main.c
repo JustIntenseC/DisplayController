@@ -19,8 +19,11 @@
 /* USER CODE BEGIN PV */
 volatile bool display_enabled = 0;
 static uint8_t frame_buff[FRAME_BUFFER_SIZE] __attribute__((section(".video_buffers"), aligned(32)));
+static uint8_t frame_buff2[FRAME_BUFFER_SIZE] __attribute__((section(".video_buffers"), aligned(32)));
 LTDC_Block_t lt = {0};
 extern volatile uint8_t uart_command_received;
+extern UART_HandleTypeDef huart1;
+volatile extern char packet_buffer[32];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -44,13 +47,12 @@ int main(void)
 
   UART_Init();
   /* USER CODE BEGIN 2 */
-
   lt.frame_buffer = frame_buff;
   lt.frame_status = 0;
   lt.state = FSM_IDLE;
   LTDC_Init(&lt.hltdc,&lt.pLayerCfg,lt.frame_buffer);
-  FillFrameBuffer(0xFF, lt.frame_buffer);
-/* USER CODE END 2 */ 
+  FillFrameBuffer(0x00, lt.frame_buffer);
+  /* USER CODE END 2 */ 
 
   while (1)
   {
@@ -59,7 +61,9 @@ int main(void)
     if(uart_command_received){
       
       UART_HandlePacket();
-      uart_command_received = 0 ;
+      uart_command_received = 0;
+      memset(packet_buffer, 0x00, sizeof(packet_buffer));
+    
     }
     LTDC_FSM_Handle(&lt);
     /* USER CODE END WHILE */
@@ -89,7 +93,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 4;
-  RCC_OscInitStruct.PLL.PLLN = 20;
+  RCC_OscInitStruct.PLL.PLLN = 25;
   RCC_OscInitStruct.PLL.PLLP = 2;
   RCC_OscInitStruct.PLL.PLLQ = 2;
   RCC_OscInitStruct.PLL.PLLR = 2;
@@ -147,14 +151,12 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void LTDC_FSM_Handle(LTDC_Block_t *lt){
-    static uint8_t last_display_enabled = 0 ;
     switch (lt->state)
     {
         
     case FSM_IDLE:
-      if(last_display_enabled != display_enabled){
-        last_display_enabled = display_enabled;
-        uint8_t color = display_enabled ? 0x00 : 0xFF;
+      if(!display_enabled){
+        uint8_t color = 0x00;
         FillFrameBuffer(color, lt->frame_buffer);
       }
       else lt->state = FSM_START_FRAME;

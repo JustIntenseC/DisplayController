@@ -1,11 +1,12 @@
 #include <uart.h>
-
+#include "ltdc_drive.h"
+extern LTDC_Block_t lt;
 UART_HandleTypeDef huart1;
 
 volatile uint8_t uart_command_received = 0;
-uint8_t packet_received = 0;
-uint8_t packet_index = 0;
-char packet_buffer[64] = "";
+volatile uint8_t uart_frame_received = 0;
+volatile uint32_t packet_index = 0;
+volatile char packet_buffer[64] = "";
 extern volatile bool display_enabled;
 void UART_Init(void)
 {
@@ -32,7 +33,7 @@ void UART_Init(void)
 
     // Настройка UART
     huart1.Instance = USART1;
-    huart1.Init.BaudRate = 115200;
+    huart1.Init.BaudRate = 921600;
     huart1.Init.WordLength = UART_WORDLENGTH_8B;
     huart1.Init.StopBits = UART_STOPBITS_1;
     huart1.Init.Parity = UART_PARITY_NONE;
@@ -51,27 +52,38 @@ void UART_Init(void)
 }
 
 void UART_HandlePacket(void){
-    if(!strncmp(packet_buffer, "start", 5)){
-        display_enabled = 1;
-    }
-    else if(!strncmp(packet_buffer, "end", 3)){
+    if(!strncmp(packet_buffer, "end", 3)){
         display_enabled = 0;
     }
+    else if(!strncmp(packet_buffer, "load frame", 10)){
+        uart_frame_received = 1;
+        display_enabled = 1;
+    }
+
 }
+
+
 
 void USART1_IRQHandler(void){
 
     uint8_t byte = USART1 -> RDR & 0xFF;
-    if (packet_index < MAX_PACKET_SIZE) {
-        packet_buffer[packet_index] = byte;
-        packet_index++;
+    if(uart_frame_received){
+        if (packet_index < FRAME_BUFFER_SIZE) {
+            lt.frame_buffer[packet_index++] = byte;
+        }
+        if(packet_index == (FRAME_BUFFER_SIZE) ){
+            packet_index = 0;
+            uart_frame_received = 0;
+        }
+    }
+    else{
         if (byte == '\n') {
-            packet_received =1;
             packet_index = 0;
             uart_command_received = 1;
         }
-    } else {
-        packet_index = 0;
+        else{
+            packet_buffer[packet_index++] = byte;
+        }
     }
 }
 
