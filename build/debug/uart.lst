@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 1
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 1
   43 000a 3591     		str	r1, [sp, #212]
   44 000c 3691     		str	r1, [sp, #216]
   45 000e 3791     		str	r1, [sp, #220]
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 2
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s 			page 2
 
 
   14:Core/Src/uart.c ****     RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 1
   90 004e C3F8E020 		str	r2, [r3, #224]
   91              		.loc 1 23 5 view .LVU20
   92 0052 D3F8E030 		ldr	r3, [r3, #224]
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 3
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s 			page 3
 
 
   93 0056 03F00203 		and	r3, r3, #2
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 1
  133              		.loc 1 37 5 is_stmt 1 view .LVU38
  134              		.loc 1 37 28 is_stmt 0 view .LVU39
  135 0088 8460     		str	r4, [r0, #8]
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 4
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s 			page 4
 
 
   38:Core/Src/uart.c ****     huart1.Init.StopBits = UART_STOPBITS_1;
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 1
  176              		.loc 1 51 17 view .LVU59
  177 00b2 43F02003 		orr	r3, r3, #32
  178 00b6 1360     		str	r3, [r2]
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 5
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s 			page 5
 
 
   52:Core/Src/uart.c **** }
@@ -279,336 +279,361 @@ ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 1
  212 0004 6C6F6164 		.ascii	"load frame\000"
  212      20667261 
  212      6D6500
- 213              		.section	.text.UART_HandlePacket,"ax",%progbits
- 214              		.align	1
- 215              		.global	UART_HandlePacket
- 216              		.syntax unified
- 217              		.thumb
- 218              		.thumb_func
- 220              	UART_HandlePacket:
- 221              	.LFB145:
+ 213 000f 00       		.align	2
+ 214              	.LC2:
+ 215 0010 73746172 		.ascii	"start\000"
+ 215      7400
+ 216              		.section	.text.UART_HandlePacket,"ax",%progbits
+ 217              		.align	1
+ 218              		.global	UART_HandlePacket
+ 219              		.syntax unified
+ 220              		.thumb
+ 221              		.thumb_func
+ 223              	UART_HandlePacket:
+ 224              	.LFB145:
   53:Core/Src/uart.c **** 
   54:Core/Src/uart.c **** void UART_HandlePacket(void){
- 222              		.loc 1 54 29 view -0
- 223              		.cfi_startproc
- 224              		@ args = 0, pretend = 0, frame = 0
- 225              		@ frame_needed = 0, uses_anonymous_args = 0
- 226 0000 08B5     		push	{r3, lr}
- 227              		.cfi_def_cfa_offset 8
- 228              		.cfi_offset 3, -8
- 229              		.cfi_offset 14, -4
+ 225              		.loc 1 54 29 view -0
+ 226              		.cfi_startproc
+ 227              		@ args = 0, pretend = 0, frame = 0
+ 228              		@ frame_needed = 0, uses_anonymous_args = 0
+ 229 0000 08B5     		push	{r3, lr}
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s 			page 6
+
+
+ 230              		.cfi_def_cfa_offset 8
+ 231              		.cfi_offset 3, -8
+ 232              		.cfi_offset 14, -4
   55:Core/Src/uart.c ****     if(!strncmp(packet_buffer, "end", 3)){
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 6
-
-
- 230              		.loc 1 55 5 view .LVU64
- 231              		.loc 1 55 9 is_stmt 0 view .LVU65
- 232 0002 0322     		movs	r2, #3
- 233 0004 0A49     		ldr	r1, .L13
- 234 0006 0B48     		ldr	r0, .L13+4
- 235 0008 FFF7FEFF 		bl	strncmp
- 236              	.LVL8:
- 237              		.loc 1 55 7 discriminator 1 view .LVU66
- 238 000c 18B9     		cbnz	r0, .L10
+ 233              		.loc 1 55 5 view .LVU64
+ 234              		.loc 1 55 9 is_stmt 0 view .LVU65
+ 235 0002 0322     		movs	r2, #3
+ 236 0004 0E49     		ldr	r1, .L14
+ 237 0006 0F48     		ldr	r0, .L14+4
+ 238 0008 FFF7FEFF 		bl	strncmp
+ 239              	.LVL8:
+ 240              		.loc 1 55 7 discriminator 1 view .LVU66
+ 241 000c 18B9     		cbnz	r0, .L10
   56:Core/Src/uart.c ****         display_enabled = 0;
- 239              		.loc 1 56 9 is_stmt 1 view .LVU67
- 240              		.loc 1 56 25 is_stmt 0 view .LVU68
- 241 000e 0A4B     		ldr	r3, .L13+8
- 242 0010 0022     		movs	r2, #0
- 243 0012 1A70     		strb	r2, [r3]
- 244              	.L9:
+ 242              		.loc 1 56 9 is_stmt 1 view .LVU67
+ 243              		.loc 1 56 25 is_stmt 0 view .LVU68
+ 244 000e 0E4B     		ldr	r3, .L14+8
+ 245 0010 0022     		movs	r2, #0
+ 246 0012 1A70     		strb	r2, [r3]
+ 247              	.L9:
   57:Core/Src/uart.c ****     }
   58:Core/Src/uart.c ****     else if(!strncmp(packet_buffer, "load frame", 10)){
   59:Core/Src/uart.c ****         uart_frame_received = 1;
-  60:Core/Src/uart.c ****         display_enabled = 1;
-  61:Core/Src/uart.c ****     }
-  62:Core/Src/uart.c **** 
-  63:Core/Src/uart.c **** }
- 245              		.loc 1 63 1 view .LVU69
- 246 0014 08BD     		pop	{r3, pc}
- 247              	.L10:
-  58:Core/Src/uart.c ****         uart_frame_received = 1;
- 248              		.loc 1 58 10 is_stmt 1 view .LVU70
-  58:Core/Src/uart.c ****         uart_frame_received = 1;
- 249              		.loc 1 58 14 is_stmt 0 view .LVU71
- 250 0016 0A22     		movs	r2, #10
- 251 0018 0849     		ldr	r1, .L13+12
- 252 001a 0648     		ldr	r0, .L13+4
- 253 001c FFF7FEFF 		bl	strncmp
- 254              	.LVL9:
-  58:Core/Src/uart.c ****         uart_frame_received = 1;
- 255              		.loc 1 58 12 discriminator 1 view .LVU72
- 256 0020 0028     		cmp	r0, #0
- 257 0022 F7D1     		bne	.L9
-  59:Core/Src/uart.c ****         display_enabled = 1;
- 258              		.loc 1 59 9 is_stmt 1 view .LVU73
-  59:Core/Src/uart.c ****         display_enabled = 1;
- 259              		.loc 1 59 29 is_stmt 0 view .LVU74
- 260 0024 0123     		movs	r3, #1
- 261 0026 064A     		ldr	r2, .L13+16
- 262 0028 1370     		strb	r3, [r2]
   60:Core/Src/uart.c ****     }
- 263              		.loc 1 60 9 is_stmt 1 view .LVU75
-  60:Core/Src/uart.c ****     }
- 264              		.loc 1 60 25 is_stmt 0 view .LVU76
- 265 002a 034A     		ldr	r2, .L13+8
- 266 002c 1370     		strb	r3, [r2]
- 267              		.loc 1 63 1 view .LVU77
- 268 002e F1E7     		b	.L9
- 269              	.L14:
- 270              		.align	2
- 271              	.L13:
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 7
-
-
- 272 0030 00000000 		.word	.LC0
- 273 0034 00000000 		.word	packet_buffer
- 274 0038 00000000 		.word	display_enabled
- 275 003c 04000000 		.word	.LC1
- 276 0040 00000000 		.word	uart_frame_received
- 277              		.cfi_endproc
- 278              	.LFE145:
- 280              		.section	.text.USART1_IRQHandler,"ax",%progbits
- 281              		.align	1
- 282              		.global	USART1_IRQHandler
- 283              		.syntax unified
- 284              		.thumb
- 285              		.thumb_func
- 287              	USART1_IRQHandler:
- 288              	.LFB146:
+  61:Core/Src/uart.c ****     else if(!strncmp(packet_buffer, "start", 5)){
+  62:Core/Src/uart.c ****         display_enabled = 1;
+  63:Core/Src/uart.c ****     }
   64:Core/Src/uart.c **** 
-  65:Core/Src/uart.c **** 
+  65:Core/Src/uart.c **** }
+ 248              		.loc 1 65 1 view .LVU69
+ 249 0014 08BD     		pop	{r3, pc}
+ 250              	.L10:
+  58:Core/Src/uart.c ****         uart_frame_received = 1;
+ 251              		.loc 1 58 10 is_stmt 1 view .LVU70
+  58:Core/Src/uart.c ****         uart_frame_received = 1;
+ 252              		.loc 1 58 14 is_stmt 0 view .LVU71
+ 253 0016 0A22     		movs	r2, #10
+ 254 0018 0C49     		ldr	r1, .L14+12
+ 255 001a 0A48     		ldr	r0, .L14+4
+ 256 001c FFF7FEFF 		bl	strncmp
+ 257              	.LVL9:
+  58:Core/Src/uart.c ****         uart_frame_received = 1;
+ 258              		.loc 1 58 12 discriminator 1 view .LVU72
+ 259 0020 18B9     		cbnz	r0, .L12
+  59:Core/Src/uart.c ****     }
+ 260              		.loc 1 59 9 is_stmt 1 view .LVU73
+  59:Core/Src/uart.c ****     }
+ 261              		.loc 1 59 29 is_stmt 0 view .LVU74
+ 262 0022 0B4B     		ldr	r3, .L14+16
+ 263 0024 0122     		movs	r2, #1
+ 264 0026 1A70     		strb	r2, [r3]
+ 265 0028 F4E7     		b	.L9
+ 266              	.L12:
+  61:Core/Src/uart.c ****         display_enabled = 1;
+ 267              		.loc 1 61 10 is_stmt 1 view .LVU75
+  61:Core/Src/uart.c ****         display_enabled = 1;
+ 268              		.loc 1 61 14 is_stmt 0 view .LVU76
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s 			page 7
+
+
+ 269 002a 0522     		movs	r2, #5
+ 270 002c 0949     		ldr	r1, .L14+20
+ 271 002e 0548     		ldr	r0, .L14+4
+ 272 0030 FFF7FEFF 		bl	strncmp
+ 273              	.LVL10:
+  61:Core/Src/uart.c ****         display_enabled = 1;
+ 274              		.loc 1 61 12 discriminator 1 view .LVU77
+ 275 0034 0028     		cmp	r0, #0
+ 276 0036 EDD1     		bne	.L9
+  62:Core/Src/uart.c ****     }
+ 277              		.loc 1 62 9 is_stmt 1 view .LVU78
+  62:Core/Src/uart.c ****     }
+ 278              		.loc 1 62 25 is_stmt 0 view .LVU79
+ 279 0038 034B     		ldr	r3, .L14+8
+ 280 003a 0122     		movs	r2, #1
+ 281 003c 1A70     		strb	r2, [r3]
+ 282              		.loc 1 65 1 view .LVU80
+ 283 003e E9E7     		b	.L9
+ 284              	.L15:
+ 285              		.align	2
+ 286              	.L14:
+ 287 0040 00000000 		.word	.LC0
+ 288 0044 00000000 		.word	packet_buffer
+ 289 0048 00000000 		.word	display_enabled
+ 290 004c 04000000 		.word	.LC1
+ 291 0050 00000000 		.word	uart_frame_received
+ 292 0054 10000000 		.word	.LC2
+ 293              		.cfi_endproc
+ 294              	.LFE145:
+ 296              		.section	.text.USART1_IRQHandler,"ax",%progbits
+ 297              		.align	1
+ 298              		.global	USART1_IRQHandler
+ 299              		.syntax unified
+ 300              		.thumb
+ 301              		.thumb_func
+ 303              	USART1_IRQHandler:
+ 304              	.LFB146:
   66:Core/Src/uart.c **** 
-  67:Core/Src/uart.c **** void USART1_IRQHandler(void){
- 289              		.loc 1 67 29 is_stmt 1 view -0
- 290              		.cfi_startproc
- 291              		@ args = 0, pretend = 0, frame = 0
- 292              		@ frame_needed = 0, uses_anonymous_args = 0
- 293              		@ link register save eliminated.
-  68:Core/Src/uart.c **** 
-  69:Core/Src/uart.c ****     uint8_t byte = USART1 -> RDR & 0xFF;
- 294              		.loc 1 69 5 view .LVU79
- 295              		.loc 1 69 27 is_stmt 0 view .LVU80
- 296 0000 184B     		ldr	r3, .L26
- 297 0002 5B6A     		ldr	r3, [r3, #36]
- 298              		.loc 1 69 13 view .LVU81
- 299 0004 DBB2     		uxtb	r3, r3
- 300              	.LVL10:
-  70:Core/Src/uart.c ****     if(uart_frame_received){
- 301              		.loc 1 70 5 is_stmt 1 view .LVU82
- 302              		.loc 1 70 8 is_stmt 0 view .LVU83
- 303 0006 184A     		ldr	r2, .L26+4
- 304 0008 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
- 305              		.loc 1 70 7 view .LVU84
- 306 000a D2B1     		cbz	r2, .L16
   67:Core/Src/uart.c **** 
- 307              		.loc 1 67 29 view .LVU85
- 308 000c 10B4     		push	{r4}
- 309              		.cfi_def_cfa_offset 4
- 310              		.cfi_offset 4, -4
-  71:Core/Src/uart.c ****         if (packet_index < FRAME_BUFFER_SIZE) {
- 311              		.loc 1 71 9 is_stmt 1 view .LVU86
- 312              		.loc 1 71 26 is_stmt 0 view .LVU87
- 313 000e 174A     		ldr	r2, .L26+8
- 314 0010 1268     		ldr	r2, [r2]
- 315              		.loc 1 71 12 view .LVU88
- 316 0012 B2F5962F 		cmp	r2, #307200
- 317 0016 06D2     		bcs	.L17
-  72:Core/Src/uart.c ****             lt.frame_buffer[packet_index++] = byte;
- 318              		.loc 1 72 13 is_stmt 1 view .LVU89
- 319              		.loc 1 72 15 is_stmt 0 view .LVU90
- 320 0018 154A     		ldr	r2, .L26+12
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 8
+  68:Core/Src/uart.c **** 
+  69:Core/Src/uart.c **** void USART1_IRQHandler(void){
+ 305              		.loc 1 69 29 is_stmt 1 view -0
+ 306              		.cfi_startproc
+ 307              		@ args = 0, pretend = 0, frame = 0
+ 308              		@ frame_needed = 0, uses_anonymous_args = 0
+ 309              		@ link register save eliminated.
+  70:Core/Src/uart.c **** 
+  71:Core/Src/uart.c ****     uint8_t byte = USART1 -> RDR & 0xFF;
+ 310              		.loc 1 71 5 view .LVU82
+ 311              		.loc 1 71 27 is_stmt 0 view .LVU83
+ 312 0000 184B     		ldr	r3, .L27
+ 313 0002 5B6A     		ldr	r3, [r3, #36]
+ 314              		.loc 1 71 13 view .LVU84
+ 315 0004 DBB2     		uxtb	r3, r3
+ 316              	.LVL11:
+  72:Core/Src/uart.c ****     if(uart_frame_received){
+ 317              		.loc 1 72 5 is_stmt 1 view .LVU85
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s 			page 8
 
 
- 321 001a 5068     		ldr	r0, [r2, #4]
- 322              		.loc 1 72 41 view .LVU91
- 323 001c 1349     		ldr	r1, .L26+8
- 324 001e 0A68     		ldr	r2, [r1]
- 325 0020 541C     		adds	r4, r2, #1
- 326 0022 0C60     		str	r4, [r1]
- 327              		.loc 1 72 45 view .LVU92
- 328 0024 8354     		strb	r3, [r0, r2]
- 329              	.L17:
-  73:Core/Src/uart.c ****         }
-  74:Core/Src/uart.c ****         if(packet_index == (FRAME_BUFFER_SIZE) ){
- 330              		.loc 1 74 9 is_stmt 1 view .LVU93
- 331              		.loc 1 74 25 is_stmt 0 view .LVU94
- 332 0026 114B     		ldr	r3, .L26+8
- 333              	.LVL11:
- 334              		.loc 1 74 25 view .LVU95
- 335 0028 1B68     		ldr	r3, [r3]
- 336              		.loc 1 74 11 view .LVU96
- 337 002a B3F5962F 		cmp	r3, #307200
- 338 002e 02D0     		beq	.L24
- 339              	.L15:
-  75:Core/Src/uart.c ****             packet_index = 0;
-  76:Core/Src/uart.c ****             uart_frame_received = 0;
-  77:Core/Src/uart.c ****         }
-  78:Core/Src/uart.c ****     }
-  79:Core/Src/uart.c ****     else{
-  80:Core/Src/uart.c ****         if (byte == '\n') {
-  81:Core/Src/uart.c ****             packet_index = 0;
-  82:Core/Src/uart.c ****             uart_command_received = 1;
-  83:Core/Src/uart.c ****         }
-  84:Core/Src/uart.c ****         else{
-  85:Core/Src/uart.c ****             packet_buffer[packet_index++] = byte;
-  86:Core/Src/uart.c ****         }
-  87:Core/Src/uart.c ****     }
-  88:Core/Src/uart.c **** }
- 340              		.loc 1 88 1 view .LVU97
- 341 0030 5DF8044B 		ldr	r4, [sp], #4
- 342              		.cfi_remember_state
- 343              		.cfi_restore 4
- 344              		.cfi_def_cfa_offset 0
- 345 0034 7047     		bx	lr
- 346              	.L24:
- 347              		.cfi_restore_state
-  75:Core/Src/uart.c ****             packet_index = 0;
- 348              		.loc 1 75 13 is_stmt 1 view .LVU98
-  75:Core/Src/uart.c ****             packet_index = 0;
- 349              		.loc 1 75 26 is_stmt 0 view .LVU99
- 350 0036 0023     		movs	r3, #0
- 351 0038 0C4A     		ldr	r2, .L26+8
- 352 003a 1360     		str	r3, [r2]
-  76:Core/Src/uart.c ****         }
- 353              		.loc 1 76 13 is_stmt 1 view .LVU100
-  76:Core/Src/uart.c ****         }
- 354              		.loc 1 76 33 is_stmt 0 view .LVU101
- 355 003c 0A4A     		ldr	r2, .L26+4
- 356 003e 1370     		strb	r3, [r2]
- 357 0040 F6E7     		b	.L15
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 9
+ 318              		.loc 1 72 8 is_stmt 0 view .LVU86
+ 319 0006 184A     		ldr	r2, .L27+4
+ 320 0008 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 321              		.loc 1 72 7 view .LVU87
+ 322 000a D2B1     		cbz	r2, .L17
+  69:Core/Src/uart.c **** 
+ 323              		.loc 1 69 29 view .LVU88
+ 324 000c 10B4     		push	{r4}
+ 325              		.cfi_def_cfa_offset 4
+ 326              		.cfi_offset 4, -4
+  73:Core/Src/uart.c ****         if (packet_index < FRAME_BUFFER_SIZE) {
+ 327              		.loc 1 73 9 is_stmt 1 view .LVU89
+ 328              		.loc 1 73 26 is_stmt 0 view .LVU90
+ 329 000e 174A     		ldr	r2, .L27+8
+ 330 0010 1268     		ldr	r2, [r2]
+ 331              		.loc 1 73 12 view .LVU91
+ 332 0012 B2F5962F 		cmp	r2, #307200
+ 333 0016 06D2     		bcs	.L18
+  74:Core/Src/uart.c ****             lt.frame_buffer[packet_index++] = byte;
+ 334              		.loc 1 74 13 is_stmt 1 view .LVU92
+ 335              		.loc 1 74 15 is_stmt 0 view .LVU93
+ 336 0018 154A     		ldr	r2, .L27+12
+ 337 001a 5068     		ldr	r0, [r2, #4]
+ 338              		.loc 1 74 41 view .LVU94
+ 339 001c 1349     		ldr	r1, .L27+8
+ 340 001e 0A68     		ldr	r2, [r1]
+ 341 0020 541C     		adds	r4, r2, #1
+ 342 0022 0C60     		str	r4, [r1]
+ 343              		.loc 1 74 45 view .LVU95
+ 344 0024 8354     		strb	r3, [r0, r2]
+ 345              	.L18:
+  75:Core/Src/uart.c ****         }
+  76:Core/Src/uart.c ****         if(packet_index == (FRAME_BUFFER_SIZE) ){
+ 346              		.loc 1 76 9 is_stmt 1 view .LVU96
+ 347              		.loc 1 76 25 is_stmt 0 view .LVU97
+ 348 0026 114B     		ldr	r3, .L27+8
+ 349              	.LVL12:
+ 350              		.loc 1 76 25 view .LVU98
+ 351 0028 1B68     		ldr	r3, [r3]
+ 352              		.loc 1 76 11 view .LVU99
+ 353 002a B3F5962F 		cmp	r3, #307200
+ 354 002e 02D0     		beq	.L25
+ 355              	.L16:
+  77:Core/Src/uart.c ****             packet_index = 0;
+  78:Core/Src/uart.c ****             uart_frame_received = 0;
+  79:Core/Src/uart.c ****         }
+  80:Core/Src/uart.c ****     }
+  81:Core/Src/uart.c ****     else{
+  82:Core/Src/uart.c ****         if (byte == '\n') {
+  83:Core/Src/uart.c ****             packet_index = 0;
+  84:Core/Src/uart.c ****             uart_command_received = 1;
+  85:Core/Src/uart.c ****         }
+  86:Core/Src/uart.c ****         else{
+  87:Core/Src/uart.c ****             packet_buffer[packet_index++] = byte;
+  88:Core/Src/uart.c ****         }
+  89:Core/Src/uart.c ****     }
+  90:Core/Src/uart.c **** }
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s 			page 9
 
 
- 358              	.LVL12:
- 359              	.L16:
+ 356              		.loc 1 90 1 view .LVU100
+ 357 0030 5DF8044B 		ldr	r4, [sp], #4
+ 358              		.cfi_remember_state
+ 359              		.cfi_restore 4
  360              		.cfi_def_cfa_offset 0
- 361              		.cfi_restore 4
-  80:Core/Src/uart.c ****             packet_index = 0;
- 362              		.loc 1 80 9 is_stmt 1 view .LVU102
-  80:Core/Src/uart.c ****             packet_index = 0;
- 363              		.loc 1 80 12 is_stmt 0 view .LVU103
- 364 0042 0A2B     		cmp	r3, #10
- 365 0044 06D0     		beq	.L25
-  85:Core/Src/uart.c ****         }
- 366              		.loc 1 85 13 is_stmt 1 view .LVU104
-  85:Core/Src/uart.c ****         }
- 367              		.loc 1 85 39 is_stmt 0 view .LVU105
- 368 0046 0949     		ldr	r1, .L26+8
- 369 0048 0A68     		ldr	r2, [r1]
- 370 004a 501C     		adds	r0, r2, #1
- 371 004c 0860     		str	r0, [r1]
-  85:Core/Src/uart.c ****         }
- 372              		.loc 1 85 43 view .LVU106
- 373 004e 0949     		ldr	r1, .L26+16
- 374 0050 8B54     		strb	r3, [r1, r2]
- 375 0052 7047     		bx	lr
- 376              	.L25:
-  81:Core/Src/uart.c ****             uart_command_received = 1;
- 377              		.loc 1 81 13 is_stmt 1 view .LVU107
-  81:Core/Src/uart.c ****             uart_command_received = 1;
- 378              		.loc 1 81 26 is_stmt 0 view .LVU108
- 379 0054 054B     		ldr	r3, .L26+8
- 380              	.LVL13:
-  81:Core/Src/uart.c ****             uart_command_received = 1;
- 381              		.loc 1 81 26 view .LVU109
- 382 0056 0022     		movs	r2, #0
- 383 0058 1A60     		str	r2, [r3]
-  82:Core/Src/uart.c ****         }
- 384              		.loc 1 82 13 is_stmt 1 view .LVU110
-  82:Core/Src/uart.c ****         }
- 385              		.loc 1 82 35 is_stmt 0 view .LVU111
- 386 005a 074B     		ldr	r3, .L26+20
- 387 005c 0122     		movs	r2, #1
- 388 005e 1A70     		strb	r2, [r3]
- 389 0060 7047     		bx	lr
- 390              	.L27:
- 391 0062 00BF     		.align	2
+ 361 0034 7047     		bx	lr
+ 362              	.L25:
+ 363              		.cfi_restore_state
+  77:Core/Src/uart.c ****             packet_index = 0;
+ 364              		.loc 1 77 13 is_stmt 1 view .LVU101
+  77:Core/Src/uart.c ****             packet_index = 0;
+ 365              		.loc 1 77 26 is_stmt 0 view .LVU102
+ 366 0036 0023     		movs	r3, #0
+ 367 0038 0C4A     		ldr	r2, .L27+8
+ 368 003a 1360     		str	r3, [r2]
+  78:Core/Src/uart.c ****         }
+ 369              		.loc 1 78 13 is_stmt 1 view .LVU103
+  78:Core/Src/uart.c ****         }
+ 370              		.loc 1 78 33 is_stmt 0 view .LVU104
+ 371 003c 0A4A     		ldr	r2, .L27+4
+ 372 003e 1370     		strb	r3, [r2]
+ 373 0040 F6E7     		b	.L16
+ 374              	.LVL13:
+ 375              	.L17:
+ 376              		.cfi_def_cfa_offset 0
+ 377              		.cfi_restore 4
+  82:Core/Src/uart.c ****             packet_index = 0;
+ 378              		.loc 1 82 9 is_stmt 1 view .LVU105
+  82:Core/Src/uart.c ****             packet_index = 0;
+ 379              		.loc 1 82 12 is_stmt 0 view .LVU106
+ 380 0042 0A2B     		cmp	r3, #10
+ 381 0044 06D0     		beq	.L26
+  87:Core/Src/uart.c ****         }
+ 382              		.loc 1 87 13 is_stmt 1 view .LVU107
+  87:Core/Src/uart.c ****         }
+ 383              		.loc 1 87 39 is_stmt 0 view .LVU108
+ 384 0046 0949     		ldr	r1, .L27+8
+ 385 0048 0A68     		ldr	r2, [r1]
+ 386 004a 501C     		adds	r0, r2, #1
+ 387 004c 0860     		str	r0, [r1]
+  87:Core/Src/uart.c ****         }
+ 388              		.loc 1 87 43 view .LVU109
+ 389 004e 0949     		ldr	r1, .L27+16
+ 390 0050 8B54     		strb	r3, [r1, r2]
+ 391 0052 7047     		bx	lr
  392              	.L26:
- 393 0064 00100140 		.word	1073811456
- 394 0068 00000000 		.word	uart_frame_received
- 395 006c 00000000 		.word	packet_index
- 396 0070 00000000 		.word	lt
- 397 0074 00000000 		.word	packet_buffer
- 398 0078 00000000 		.word	uart_command_received
- 399              		.cfi_endproc
- 400              	.LFE146:
- 402              		.global	packet_buffer
- 403              		.section	.bss.packet_buffer,"aw",%nobits
- 404              		.align	2
- 407              	packet_buffer:
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 10
+  83:Core/Src/uart.c ****             uart_command_received = 1;
+ 393              		.loc 1 83 13 is_stmt 1 view .LVU110
+  83:Core/Src/uart.c ****             uart_command_received = 1;
+ 394              		.loc 1 83 26 is_stmt 0 view .LVU111
+ 395 0054 054B     		ldr	r3, .L27+8
+ 396              	.LVL14:
+  83:Core/Src/uart.c ****             uart_command_received = 1;
+ 397              		.loc 1 83 26 view .LVU112
+ 398 0056 0022     		movs	r2, #0
+ 399 0058 1A60     		str	r2, [r3]
+  84:Core/Src/uart.c ****         }
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s 			page 10
 
 
- 408 0000 00000000 		.space	64
- 408      00000000 
- 408      00000000 
- 408      00000000 
- 408      00000000 
- 409              		.global	packet_index
- 410              		.section	.bss.packet_index,"aw",%nobits
- 411              		.align	2
- 414              	packet_index:
- 415 0000 00000000 		.space	4
- 416              		.global	uart_frame_received
- 417              		.section	.bss.uart_frame_received,"aw",%nobits
- 420              	uart_frame_received:
- 421 0000 00       		.space	1
- 422              		.global	uart_command_received
- 423              		.section	.bss.uart_command_received,"aw",%nobits
- 426              	uart_command_received:
- 427 0000 00       		.space	1
- 428              		.global	huart1
- 429              		.section	.bss.huart1,"aw",%nobits
- 430              		.align	2
- 433              	huart1:
- 434 0000 00000000 		.space	148
- 434      00000000 
- 434      00000000 
- 434      00000000 
- 434      00000000 
- 435              		.text
- 436              	.Letext0:
- 437              		.file 2 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h"
- 438              		.file 3 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@xp
- 439              		.file 4 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@xp
- 440              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
- 441              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h"
- 442              		.file 7 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
- 443              		.file 8 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
- 444              		.file 9 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ltdc.h"
- 445              		.file 10 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h"
- 446              		.file 11 "Core/Inc/ltdc_drive.h"
- 447              		.file 12 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
- 448              		.file 13 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@x
- 449              		.file 14 "Core/Inc/main.h"
- 450              		.file 15 "<built-in>"
-ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s 			page 11
+ 400              		.loc 1 84 13 is_stmt 1 view .LVU113
+  84:Core/Src/uart.c ****         }
+ 401              		.loc 1 84 35 is_stmt 0 view .LVU114
+ 402 005a 074B     		ldr	r3, .L27+20
+ 403 005c 0122     		movs	r2, #1
+ 404 005e 1A70     		strb	r2, [r3]
+ 405 0060 7047     		bx	lr
+ 406              	.L28:
+ 407 0062 00BF     		.align	2
+ 408              	.L27:
+ 409 0064 00100140 		.word	1073811456
+ 410 0068 00000000 		.word	uart_frame_received
+ 411 006c 00000000 		.word	packet_index
+ 412 0070 00000000 		.word	lt
+ 413 0074 00000000 		.word	packet_buffer
+ 414 0078 00000000 		.word	uart_command_received
+ 415              		.cfi_endproc
+ 416              	.LFE146:
+ 418              		.global	packet_buffer
+ 419              		.section	.bss.packet_buffer,"aw",%nobits
+ 420              		.align	2
+ 423              	packet_buffer:
+ 424 0000 00000000 		.space	64
+ 424      00000000 
+ 424      00000000 
+ 424      00000000 
+ 424      00000000 
+ 425              		.global	packet_index
+ 426              		.section	.bss.packet_index,"aw",%nobits
+ 427              		.align	2
+ 430              	packet_index:
+ 431 0000 00000000 		.space	4
+ 432              		.global	uart_frame_received
+ 433              		.section	.bss.uart_frame_received,"aw",%nobits
+ 436              	uart_frame_received:
+ 437 0000 00       		.space	1
+ 438              		.global	uart_command_received
+ 439              		.section	.bss.uart_command_received,"aw",%nobits
+ 442              	uart_command_received:
+ 443 0000 00       		.space	1
+ 444              		.global	huart1
+ 445              		.section	.bss.huart1,"aw",%nobits
+ 446              		.align	2
+ 449              	huart1:
+ 450 0000 00000000 		.space	148
+ 450      00000000 
+ 450      00000000 
+ 450      00000000 
+ 450      00000000 
+ 451              		.text
+ 452              	.Letext0:
+ 453              		.file 2 "Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h743xx.h"
+ 454              		.file 3 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@xp
+ 455              		.file 4 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@xp
+ 456              		.file 5 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_def.h"
+ 457              		.file 6 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc_ex.h"
+ 458              		.file 7 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s 			page 11
+
+
+ 459              		.file 8 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma.h"
+ 460              		.file 9 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ltdc.h"
+ 461              		.file 10 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h"
+ 462              		.file 11 "Core/Inc/ltdc_drive.h"
+ 463              		.file 12 "Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
+ 464              		.file 13 "/Users/rasil/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/@x
+ 465              		.file 14 "Core/Inc/main.h"
+ 466              		.file 15 "<built-in>"
+ARM GAS  /var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 uart.c
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:20     .text.UART_Init:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:26     .text.UART_Init:00000000 UART_Init
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:199    .text.UART_Init:000000c8 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:433    .bss.huart1:00000000 huart1
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:207    .rodata.UART_HandlePacket.str1.4:00000000 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:214    .text.UART_HandlePacket:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:220    .text.UART_HandlePacket:00000000 UART_HandlePacket
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:272    .text.UART_HandlePacket:00000030 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:407    .bss.packet_buffer:00000000 packet_buffer
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:420    .bss.uart_frame_received:00000000 uart_frame_received
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:281    .text.USART1_IRQHandler:00000000 $t
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:287    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:393    .text.USART1_IRQHandler:00000064 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:414    .bss.packet_index:00000000 packet_index
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:426    .bss.uart_command_received:00000000 uart_command_received
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:404    .bss.packet_buffer:00000000 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:411    .bss.packet_index:00000000 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:421    .bss.uart_frame_received:00000000 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:427    .bss.uart_command_received:00000000 $d
-/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccnnLbEX.s:430    .bss.huart1:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:20     .text.UART_Init:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:26     .text.UART_Init:00000000 UART_Init
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:199    .text.UART_Init:000000c8 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:449    .bss.huart1:00000000 huart1
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:207    .rodata.UART_HandlePacket.str1.4:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:217    .text.UART_HandlePacket:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:223    .text.UART_HandlePacket:00000000 UART_HandlePacket
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:287    .text.UART_HandlePacket:00000040 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:423    .bss.packet_buffer:00000000 packet_buffer
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:436    .bss.uart_frame_received:00000000 uart_frame_received
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:297    .text.USART1_IRQHandler:00000000 $t
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:303    .text.USART1_IRQHandler:00000000 USART1_IRQHandler
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:409    .text.USART1_IRQHandler:00000064 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:430    .bss.packet_index:00000000 packet_index
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:442    .bss.uart_command_received:00000000 uart_command_received
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:420    .bss.packet_buffer:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:427    .bss.packet_index:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:437    .bss.uart_frame_received:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:443    .bss.uart_command_received:00000000 $d
+/var/folders/l4/6w9kflz11csb_6qsyz46nv3c0000gp/T//ccsw7PK9.s:446    .bss.huart1:00000000 $d
 
 UNDEFINED SYMBOLS
 memset

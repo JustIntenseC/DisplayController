@@ -42,11 +42,13 @@ void LTDC_Init(LTDC_HandleTypeDef *hltdc, LTDC_LayerCfgTypeDef *pLayerCfg, uint8
   if (HAL_LTDC_ConfigLayer(hltdc, pLayerCfg, LTDC_LAYER_1) != HAL_OK)
     Error_Handler();
 
-  HAL_LTDC_Reload(hltdc, LTDC_RELOAD_IMMEDIATE);
+
   HAL_LTDC_ProgramLineEvent(hltdc, LCD_ACTIVE_HEIGHT - 1);
   HAL_NVIC_SetPriority(LTDC_IRQn,0,0);
   HAL_NVIC_EnableIRQ(LTDC_IRQn);
 
+
+  // LTDC->GCR &= ~ (0x1UL << LTDC_GCR_LTDCEN_Pos);
 
 }
 
@@ -69,7 +71,7 @@ void LoadCLUT(LTDC_HandleTypeDef *hltdc)
 
 void FillFrameBuffer(uint8_t value, uint8_t* frame_buffer)
 {
-  memset(frame_buffer, value, FRAME_BUFFER_SIZE);
+  memset(frame_buffer, value, (FRAME_BUFFER_SIZE));
   
 }
 
@@ -82,8 +84,8 @@ void LTDC_IRQHandler(void){
     {
         __HAL_LTDC_CLEAR_FLAG(&lt.hltdc, LTDC_FLAG_LI);
         
-        lt.frame_status = FRAME_READY;                   
-        
+        lt.frame_status = FRAME_READY;        
+
     }
    
 

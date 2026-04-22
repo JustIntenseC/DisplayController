@@ -2,10 +2,12 @@
 #include "main.h"
 
 
-#define SD
+
 
 #ifndef LTDC_DRIVER_H
 #define LTDC_DRIVER_H
+
+#define SD
 
 #ifdef SD
 
@@ -43,6 +45,67 @@
 #define V_TOTAL              628
 #endif
 
+
+#ifdef XGA_1024x768
+
+#define LTDC_PCLK_VALUE      65
+#define LCD_ACTIVE_WIDTH     1024
+#define LCD_ACTIVE_HEIGHT    768
+
+#define H_SYNC_WIDTH         136
+#define H_FRONT_PORCH        24
+#define H_BACK_PORCH         160
+
+#define V_SYNC_WIDTH         6
+#define V_FRONT_PORCH        3
+#define V_BACK_PORCH         29
+
+#define H_TOTAL              1344  // 1024 + 24 + 136 + 160
+#define V_TOTAL              806   // 768 + 3 + 6 + 29
+
+#endif
+
+
+#ifdef HXXZ_4894K
+
+
+#define LTDC_PCLK_VALUE      162
+#define LCD_ACTIVE_WIDTH     1280
+#define LCD_ACTIVE_HEIGHT    2400
+
+#define H_SYNC_WIDTH         48
+#define H_FRONT_PORCH        160
+#define H_BACK_PORCH         160
+
+#define V_SYNC_WIDTH         2
+#define V_FRONT_PORCH        16
+#define V_BACK_PORCH         20
+
+#define H_TOTAL              1648
+#define V_TOTAL              2438
+
+
+#endif
+
+#ifdef HXXZ_4894K_DDR
+
+#define LTDC_PCLK_VALUE      81      
+#define LCD_ACTIVE_WIDTH     640     
+#define LCD_ACTIVE_HEIGHT    2400    
+
+#define H_SYNC_WIDTH         16      
+#define H_FRONT_PORCH        80     
+#define H_BACK_PORCH         88     
+
+#define V_SYNC_WIDTH         4       
+#define V_FRONT_PORCH        3       
+#define V_BACK_PORCH         31      
+
+#define H_TOTAL              824     
+#define V_TOTAL              2438    
+
+#endif
+
 #define FRAME_BUFFER_SIZE    (LCD_ACTIVE_WIDTH * LCD_ACTIVE_HEIGHT)  
 
 typedef enum {
@@ -60,6 +123,7 @@ typedef enum{
 typedef struct{
     fsm_state_t state;
     uint8_t * frame_buffer;
+    uint8_t * frame_buffer_back;
     LTDC_HandleTypeDef hltdc;
     LTDC_LayerCfgTypeDef pLayerCfg;
     volatile uint32_t frame_status;

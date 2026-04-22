@@ -18,8 +18,8 @@
 
 /* USER CODE BEGIN PV */
 volatile bool display_enabled = 0;
-static uint8_t frame_buff[FRAME_BUFFER_SIZE] __attribute__((section(".video_buffers"), aligned(32)));
-static uint8_t frame_buff2[FRAME_BUFFER_SIZE] __attribute__((section(".video_buffers"), aligned(32)));
+static uint8_t frame_buff[(FRAME_BUFFER_SIZE)] __attribute__((section(".video_buffers"), aligned(32)));
+// static uint8_t frame_buff2[(FRAME_BUFFER_SIZE)/2] __attribute__((section(".video_buffers"), aligned(32)));
 LTDC_Block_t lt = {0};
 extern volatile uint8_t uart_command_received;
 extern UART_HandleTypeDef huart1;
@@ -48,10 +48,17 @@ int main(void)
   UART_Init();
   /* USER CODE BEGIN 2 */
   lt.frame_buffer = frame_buff;
+  // lt.frame_buffer_back = frame_buff2;
   lt.frame_status = 0;
   lt.state = FSM_IDLE;
-  LTDC_Init(&lt.hltdc,&lt.pLayerCfg,lt.frame_buffer);
+
+  // FillFrameBuffer(0xFF, lt.frame_buffer_back);
   FillFrameBuffer(0x00, lt.frame_buffer);
+  
+
+  LTDC_Init(&lt.hltdc,&lt.pLayerCfg,lt.frame_buffer);
+  LoadCLUT(&lt.hltdc);
+
   /* USER CODE END 2 */ 
 
   while (1)
@@ -153,13 +160,17 @@ static void MX_GPIO_Init(void)
 void LTDC_FSM_Handle(LTDC_Block_t *lt){
     switch (lt->state)
     {
-        
     case FSM_IDLE:
-      if(!display_enabled){
-        uint8_t color = 0x00;
-        FillFrameBuffer(color, lt->frame_buffer);
+      if(!display_enabled){  
+        if(RCC->APB3ENR >> RCC_APB3ENR_LTDCEN_Pos & 0x1){
+          __HAL_RCC_LTDC_CLK_DISABLE();
+        }
+          break;
       }
-      else lt->state = FSM_START_FRAME;
+      if(!(RCC->APB3ENR >> RCC_APB3ENR_LTDCEN & 0x1)){
+          __HAL_RCC_LTDC_CLK_ENABLE();
+         }
+      lt->state = FSM_START_FRAME;
 
     break;
 
@@ -169,13 +180,16 @@ void LTDC_FSM_Handle(LTDC_Block_t *lt){
 
     case FSM_RUNNING:
       if(lt->frame_status){
+        
         lt->frame_status = FRAME_NOT_READY;
         lt->state = FSM_END_FRAME;
+        
       }
     break;
 
     case FSM_END_FRAME:
       lt->state = FSM_IDLE;
+  
     break;
 
     default:

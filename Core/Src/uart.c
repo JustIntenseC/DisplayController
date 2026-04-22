@@ -57,6 +57,8 @@ void UART_HandlePacket(void){
     }
     else if(!strncmp(packet_buffer, "load frame", 10)){
         uart_frame_received = 1;
+    }
+    else if(!strncmp(packet_buffer, "start", 5)){
         display_enabled = 1;
     }
 
