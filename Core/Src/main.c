@@ -167,7 +167,7 @@ void LTDC_FSM_Handle(LTDC_Block_t *lt){
         }
           break;
       }
-      if(!(RCC->APB3ENR >> RCC_APB3ENR_LTDCEN & 0x1)){
+      if(!(RCC->APB3ENR >> RCC_APB3ENR_LTDCEN_Pos & 0x1)){
           __HAL_RCC_LTDC_CLK_ENABLE();
          }
       lt->state = FSM_START_FRAME;

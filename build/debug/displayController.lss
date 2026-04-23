@@ -474,10 +474,10 @@ void MPU_Config(void)
  800056a:	f023 0308 	bic.w	r3, r3, #8
  800056e:	f8c2 30e4 	str.w	r3, [r2, #228]	@ 0xe4
  8000572:	4770      	bx	lr
-      if(!(RCC->APB3ENR >> RCC_APB3ENR_LTDCEN & 0x1)){
+      if(!(RCC->APB3ENR >> RCC_APB3ENR_LTDCEN_Pos & 0x1)){
  8000574:	4b15      	ldr	r3, [pc, #84]	@ (80005cc <LTDC_FSM_Handle+0x88>)
  8000576:	f8d3 30e4 	ldr.w	r3, [r3, #228]	@ 0xe4
- 800057a:	f413 7f80 	tst.w	r3, #256	@ 0x100
+ 800057a:	f013 0f08 	tst.w	r3, #8
  800057e:	d120      	bne.n	80005c2 <LTDC_FSM_Handle+0x7e>
 void LTDC_FSM_Handle(LTDC_Block_t *lt){
  8000580:	b082      	sub	sp, #8
